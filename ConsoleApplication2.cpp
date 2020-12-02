@@ -12,15 +12,15 @@
 #include "Character.h"
 
 ///////////////////////////////////////////////////////////////////////////
-//ì¶”ê°€ì ìœ¼ë¡œ ìƒê°í•  ê²ƒ!
-//ëª¨ë“  íŒŒì¼ì˜ ìœ„ìª½ì—ëŠ” íŒŒì¼ì˜ ë‚´ìš©ì— ëŒ€í•œ ì£¼ì„ì„ ìž‘ì„±í•œë‹¤.
-//.h íŒŒì¼ì€ ê·¸ ì•ˆì— ì •ì˜ëœ ê²ƒ, ì‚¬ìš©ë˜ëŠ” ë°©ì‹ì— ëŒ€í•´ ì„¤ëª…í•œë‹¤.
-//.cpp íŒŒì¼ì€ êµ¬í˜„ì˜ ì„¸ë¶€ì‚¬í•­, ì•Œê³ ë¦¬ì¦˜ì— ëŒ€í•´ ì„¤ëª…í•œë‹¤.
-//ë‚˜ì¤‘ì— íŒŒì¼ ë¶„ë¦¬í•  ë•Œë„ íž˜ë“¤ê²Ÿë‹¤;;;
-//final, override, virtual í‚¤ì›Œë“œ
-//&, const í‚¤ì›Œë“œ
-//ê±´ë¬¼ì˜ ê°œìˆ˜ëž‘ ì¡°í˜•ë¬¼ì˜ ê°œìˆ˜ë¥¼ map ì•ˆì—ì„œ ì €ìž¥í•˜ëŠ” ê²Œ ì´ìƒí•œë°..?? static intë¡œ class ì•ˆì—ì„œ í•´ì•¼ ë˜ëŠ” ê±° ì•„ëƒ?
-//ìºë¦­í„°ëŠ” ë¬´ì¡°ê±´ ê¸±ì‚¬ì—ì„œ ì‹œìž‘í•  ê±´ì§€?
+//Ãß°¡ÀûÀ¸·Î »ý°¢ÇÒ °Í!
+//¸ðµç ÆÄÀÏÀÇ À§ÂÊ¿¡´Â ÆÄÀÏÀÇ ³»¿ë¿¡ ´ëÇÑ ÁÖ¼®À» ÀÛ¼ºÇÑ´Ù.
+//.h ÆÄÀÏÀº ±× ¾È¿¡ Á¤ÀÇµÈ °Í, »ç¿ëµÇ´Â ¹æ½Ä¿¡ ´ëÇØ ¼³¸íÇÑ´Ù.
+//.cpp ÆÄÀÏÀº ±¸ÇöÀÇ ¼¼ºÎ»çÇ×, ¾Ë°í¸®Áò¿¡ ´ëÇØ ¼³¸íÇÑ´Ù.
+//³ªÁß¿¡ ÆÄÀÏ ºÐ¸®ÇÒ ¶§µµ Èûµé°Ù´Ù;;;
+//final, override, virtual Å°¿öµå
+//&, const Å°¿öµå
+//°Ç¹°ÀÇ °³¼ö¶û Á¶Çü¹°ÀÇ °³¼ö¸¦ map ¾È¿¡¼­ ÀúÀåÇÏ´Â °Ô ÀÌ»óÇÑµ¥..?? static int·Î class ¾È¿¡¼­ ÇØ¾ß µÇ´Â °Å ¾Æ³Ä?
+//Ä³¸¯ÅÍ´Â ¹«Á¶°Ç ±ã»ç¿¡¼­ ½ÃÀÛÇÒ °ÇÁö?
 ///////////////////////////////////////////////////////////////////////////
 
 std::vector<Structure> GetStructureList() {
@@ -50,42 +50,42 @@ std::vector<Structure> GetStructureList() {
 std::vector<Structure> structure_list = GetStructureList();
 
 std::vector<Building> building_list{
-Building(4, 16, "E1", "DGIST ëŒ€í•™ ë³¸ë¶€.í•™êµ ì „ë°˜ì ì¸ í–‰ì • ì—…ë¬´ê°€ ì´ê³³ì—ì„œ ì§„í–‰ë˜ë©° ìž…í•™ì‹, ì¡¸ì—…ì‹ ë“± í•™ë¶€ìƒì˜ êµµì§í•œ í–‰ì‚¬ê°€ ì—´ë¦°ë‹¤."),
-	   Building(4, 14, "E2", "DGIST ì‹ ë¬¼ì§ˆê³¼í•™ì „ê³µ"),
-	   Building(4, 12, "E3", "DGIST ì •ë³´í†µì‹ ìœµí•©ì „ê³µ"),
-	   Building(4, 10, "E4", "DGIST ë‰´ë°”ì´ì˜¬ë¡œì§€ì „ê³µ & ë‡Œì¸ì§€ê³¼í•™ì „ê³µ"),
-	   Building(4, 8, "E5", "DGIST ë¡œë´‡ê³µí•™ì „ê³µ"),
-	   Building(4, 6, "E6", "DGIST ì—ë„ˆì§€ê³µí•™ì „ê³µ"),
-	   Building(6, 11, "E7", "E1~E6ë¥¼ ìž‡ëŠ” 3ì¸µ ë†’ì´ì˜ ë‚®ê³  ê¸´ ê±´ë¬¼. í•™ë¶€ìƒë“¤ì˜ ìˆ˜ì—…ì€ ì£¼ë¡œ ì—¬ê¸°ì„œ ì´ë£¨ì–´ì§„ë‹¤. í•´ë™ì°½ì˜ë§ˆë£¨, íœ´ê²Œì‹¤ ë“± í•™ìƒë“¤ì˜ íœ´ì‹ê³¼ ê³¼ì œë¥¼ ìœ„í•œ ê³µê°„ì´ ë§ˆë ¨ë˜ì–´ ìžˆìœ¼ë©°, í•™ìƒíšŒì‹¤, í•™ë³´ì‚¬ì‹¤ ë“± í•™ìƒìžì¹˜ë‹¨ì²´ë“¤ì˜ ê³µê°„ë„ ë§ˆë ¨ë˜ì–´ìžˆë‹¤."),
-	   Building(20, 6, "E16", "2019ë…„ 12ì›” ì¤€ê³µëœ í•™ìƒíšŒê´€. ì—¬ëŸ¬ ë™ì•„ë¦¬ë“¤ì˜ ë™ì•„ë¦¬ë°©ê³¼ ê³µì—°ë™ì•„ë¦¬ë“¤ì˜ ì—°ìŠµìž¥ì†Œê°€ ë§ˆë ¨ë˜ì–´ ìžˆìœ¼ë‚˜, ì•„ì§ ë™ì•„ë¦¬ë³„ë¡œ ë°©ì´ ë°°ì •ë˜ì§€ ì•Šì•„ í™œìš©í•˜ì§€ ëª»í•˜ê³  ìžˆë‹¤."),
-	   Building(15, 19, "R7", "ì‚°í•™í˜‘ë ¥ê´€. DGIST ë‚´ ìž…ì£¼í•œ ê¸°ì—…ë“¤ì´ ìžˆëŠ” ê³³ì´ë‹¤. ãˆœë””ì§€ì— í…, ãˆœë‚˜ë…¸íì—”í‹°, ì œí• ë“±ì´ ìžˆë‹¤."),
-	   Building(37, 24, "S1", "ì˜ˆ,ì²´ëŠ¥ í™œë™ì´ ì§„í–‰ë˜ëŠ” ê±´ë¬¼ì´ë‹¤. ì§€í•˜ì—ëŠ” ìˆ˜ì˜ìž¥ì´. 1ì¸µì—ëŠ” ì²´ìœ¡ê´€ê³¼ í—¬ìŠ¤ìž¥ì´, 2ì¸µì—ëŠ” ì²´ìœ¡ ìˆ˜ì—…ì„ ìœ„í•œ ê°•ì˜ì‹¤ê³¼ ê³¨í”„ì—°ìŠµìž¥ì´ ìžˆìœ¼ë©°, 3ì¸µì—ëŠ” ìŒì•…ì‹¤ì´ ìžˆë‹¤."),
-	   Building(41, 20, "êµ­ì œê´€", "ì™¸ë¶€ì—ì„œ ì˜¨ ì†ë‹˜ë“¤ì´ ë¨¸ë¬´ë¥´ëŠ” ìž¥ì†Œì´ë‹¤. í˜¸í…”ì˜ í˜•ì‹ì„ ê°–ì¶”ê³  ìžˆë‹¤. ëŒ€ë‹¤ìˆ˜ì˜ í•™ìƒì€ ë©´ì ‘ ë•Œë¥¼ ì œì™¸í•˜ê³ ëŠ” ê°€ë³´ì§€ ëª»í•œë‹¤."),
-	   Building(50, 10, "ëŒ€í•™ì›ìƒê¸°ìˆ™ì‚¬", "H205ë™~207ë™ìœ¼ë¡œ ë˜ì–´ìžˆìœ¼ë©°, ëŒ€í•™ì›ìƒë“¤ì´ ë¨¸ë¬´ë¥¸ë‹¤."),
-	   Building(27, 29, "ë¹…C", "DGIST ì •ë¬¸ì— ìžˆëŠ” í° DGIST í‘œì‹ì´ë‹¤. ë–¼ì„œ ì•žì˜ ë„ë¡œë¡œ êµ´ë¦¬ë©´ êµ´ëŸ¬ê°ˆ ê²ƒ ê°™ë‹¤."),
-	   Building(9, 11, "ì‹œê°„ì˜ì •ì›", "DGISTì˜ ìƒì§•ë¬¼ë¡œ ìžë¦¬ìž¡ì€ ì¡°ê°ìƒ ì¤‘ í•˜ë‚˜. ì •ì•½ìš©, ì„¸ì¢…ëŒ€ì™•, ì—ë””ìŠ¨ ë“±ì˜ ìœ„ì¸ë“¤ì´ ë‘¥ê¸€ê²Œ ì„œ ìžˆê³  ê°€ìš´ë°ì—” DGISTë§ˆí¬ê°€ ìžˆë‹¤."),
-	   Building(33, 11, "ì•¼ì™¸ìŒì•…ë‹¹", "ê°€ë” ìŒì•…ë™ì•„ë¦¬ê°€ ê³µì—°ì„ í•˜ê±°ë‚˜ ì£¼ë³€ ìœ ì¹˜ì›ì—ì„œ ì†Œí’ì„ ì˜¤ëŠ” ìž¥ì†Œì´ë‹¤. ì›í˜•ìœ¼ë¡œ ëœ ê³µì—°ìž¥ì˜ ëª¨ìŠµì„ ë„ê³  ìžˆë‹¤."),
-	   Building(23, 13, "ì—°êµ¬ë™", "ì—°êµ¬ì›ë“¤ê³¼ ìˆ˜ì—…ì„ ì•ˆ í•˜ì‹œëŠ” êµìˆ˜ë‹˜ë“¤ì´ ì—°êµ¬ë¥¼ ì§„í–‰í•˜ëŠ” ê±´ë¬¼ì´ë‹¤. í•™ìƒë“¤ì€ ë³´í†µ ì´ê³³ì— í•™ì‹ì„ ë¨¹ìœ¼ëŸ¬ ë“¤ë¥¸ë‹¤."),
-	   Building(42, 9, "ì—°êµ¬ì›ìƒí™œê´€", "ì—°êµ¬ì›ì´ ê±°ì£¼í•˜ëŠ” ìƒí™œê´€ì´ë‹¤."),
-	   Building(7, 1, "ì˜ë¹ˆê´€", "ë³¸ëž˜ ê²ŒìŠ¤íŠ¸í•˜ìš°ìŠ¤ë¡œ ì§€ì–´ì¡Œìœ¼ë‚˜ í˜„ìž¬ëŠ” êµ­ì–‘ ì´ìž¥ë‹˜ ë° ê°€ì¡±ë¶„ë“¤ê»˜ì„œ ê±°ì£¼ì¤‘ì´ì‹œë‹¤."),
-	   Building(40, 25, "ì¶•êµ¬ìž¥", "DGISTì˜ ì¶•êµ¬ìž¥ì´ë‹¤. ì¶•êµ¬ë™ì•„ë¦¬ë‚˜ ìœ ê°€ìì˜ ì¡°ê¸°ì¶•êµ¬íšŒê°€ ì£¼ë¡œ ì´ìš©í•˜ë©°, ëŒ€ë‹¤ìˆ˜ì˜ í•™ìƒì€ ì¶•êµ¬ìž¥ê³¼ ì—°ê²°ëœ ìª½ë¬¸ìœ¼ë¡œ ì¶œìž…í•˜ê¸° ìœ„í•´ ìžì£¼ ë“œë‚˜ë“ ë‹¤. "),
-	   Building(35, 27, "í…Œë‹ˆìŠ¤ìž¥", "í…Œë‹ˆìŠ¤ ë™ì•„ë¦¬ê°€ ì£¼ë¡œ í™œë™í•˜ëŠ” í…Œë‹ˆìŠ¤ìž¥ì´ë‹¤. í´ë ˆì´ì½”íŠ¸ì´ë‹¤."),
-	   Building(22, 8, "í’‹ì‚´ìž¥ê³¼ ë†êµ¬ìž¥", "ë†êµ¬ë™ì•„ë¦¬, í’‹ì‚´ë™ì•„ë¦¬ê°€ ì£¼ë¡œ í™œë™í•˜ëŠ” ìž¥ì†Œì´ë‹¤. ë¬¼ë¡  ì¼ë°˜ í•™ìƒë“¤ì—ê²Œë„ ì˜¤í”ˆë˜ì–´ ìžˆë‹¤."),
-	   Building(45, 12, "í•™ë¶€ìƒê¸°ìˆ™ì‚¬", "H201ë™~204ë™ìœ¼ë¡œ ë˜ì–´ìžˆìœ¼ë©°, í•™ë¶€ìƒë“¤ì´ ë¨¸ë¬´ë¥¸ë‹¤. ê¸°ìˆ™ì‚¬ ì‹ë‹¹ì€ ë¬¸ì„ ë‹«ì€ ìƒíƒœì´ë‹¤."),
-	   Building(10, 8, "í•™ìˆ ì •ë³´ê´€", "ì›í˜•ìœ¼ë¡œ ëœ 6ì¸µ ë†’ì´ì˜ ìœ ë¦¬ë²½ ê±´ë¬¼ì´ë‹¤. DGISTì˜ ë„ì„œê´€ ì—­í• ì„ í•˜ê³  ìžˆìœ¼ë©°, ì¡°ë³„ ê³¼ì œì™€ ìŠ¤í„°ë””, ê°œì¸ ê³µë¶€ë¥¼ ìœ„í•œ ê³µê°„ì´ ëª¨ë‘ ë§ˆë ¨ë˜ì–´ìžˆë‹¤."),
+Building(4, 16, "E1", "DGIST ´ëÇÐ º»ºÎ.ÇÐ±³ Àü¹ÝÀûÀÎ ÇàÁ¤ ¾÷¹«°¡ ÀÌ°÷¿¡¼­ ÁøÇàµÇ¸ç ÀÔÇÐ½Ä, Á¹¾÷½Ä µî ÇÐºÎ»ýÀÇ ±½Á÷ÇÑ Çà»ç°¡ ¿­¸°´Ù."),
+	   Building(4, 14, "E2", "DGIST ½Å¹°Áú°úÇÐÀü°ø"),
+	   Building(4, 12, "E3", "DGIST Á¤º¸Åë½ÅÀ¶ÇÕÀü°ø"),
+	   Building(4, 10, "E4", "DGIST ´º¹ÙÀÌ¿Ã·ÎÁöÀü°ø & ³úÀÎÁö°úÇÐÀü°ø"),
+	   Building(4, 8, "E5", "DGIST ·Îº¿°øÇÐÀü°ø"),
+	   Building(4, 6, "E6", "DGIST ¿¡³ÊÁö°øÇÐÀü°ø"),
+	   Building(6, 11, "E7", "E1~E6¸¦ ÀÕ´Â 3Ãþ ³ôÀÌÀÇ ³·°í ±ä °Ç¹°. ÇÐºÎ»ýµéÀÇ ¼ö¾÷Àº ÁÖ·Î ¿©±â¼­ ÀÌ·ç¾îÁø´Ù. ÇØµ¿Ã¢ÀÇ¸¶·ç, ÈÞ°Ô½Ç µî ÇÐ»ýµéÀÇ ÈÞ½Ä°ú °úÁ¦¸¦ À§ÇÑ °ø°£ÀÌ ¸¶·ÃµÇ¾î ÀÖÀ¸¸ç, ÇÐ»ýÈ¸½Ç, ÇÐº¸»ç½Ç µî ÇÐ»ýÀÚÄ¡´ÜÃ¼µéÀÇ °ø°£µµ ¸¶·ÃµÇ¾îÀÖ´Ù."),
+	   Building(20, 6, "E16", "2019³â 12¿ù ÁØ°øµÈ ÇÐ»ýÈ¸°ü. ¿©·¯ µ¿¾Æ¸®µéÀÇ µ¿¾Æ¸®¹æ°ú °ø¿¬µ¿¾Æ¸®µéÀÇ ¿¬½ÀÀå¼Ò°¡ ¸¶·ÃµÇ¾î ÀÖÀ¸³ª, ¾ÆÁ÷ µ¿¾Æ¸®º°·Î ¹æÀÌ ¹èÁ¤µÇÁö ¾Ê¾Æ È°¿ëÇÏÁö ¸øÇÏ°í ÀÖ´Ù."),
+	   Building(15, 19, "R7", "»êÇÐÇù·Â°ü. DGIST ³» ÀÔÁÖÇÑ ±â¾÷µéÀÌ ÀÖ´Â °÷ÀÌ´Ù. ¢ßµðÁö¿¥ÅØ, ¢ß³ª³ëÅ¥¿£Æ¼, Á¦ÇÍ µîÀÌ ÀÖ´Ù."),
+	   Building(37, 24, "S1", "¿¹,Ã¼´É È°µ¿ÀÌ ÁøÇàµÇ´Â °Ç¹°ÀÌ´Ù. ÁöÇÏ¿¡´Â ¼ö¿µÀåÀÌ. 1Ãþ¿¡´Â Ã¼À°°ü°ú Çï½ºÀåÀÌ, 2Ãþ¿¡´Â Ã¼À° ¼ö¾÷À» À§ÇÑ °­ÀÇ½Ç°ú °ñÇÁ¿¬½ÀÀåÀÌ ÀÖÀ¸¸ç, 3Ãþ¿¡´Â À½¾Ç½ÇÀÌ ÀÖ´Ù."),
+	   Building(41, 20, "±¹Á¦°ü", "¿ÜºÎ¿¡¼­ ¿Â ¼Õ´ÔµéÀÌ ¸Ó¹«¸£´Â Àå¼ÒÀÌ´Ù. È£ÅÚÀÇ Çü½ÄÀ» °®Ãß°í ÀÖ´Ù. ´ë´Ù¼öÀÇ ÇÐ»ýÀº ¸éÁ¢ ¶§¸¦ Á¦¿ÜÇÏ°í´Â °¡º¸Áö ¸øÇÑ´Ù."),
+	   Building(50, 10, "´ëÇÐ¿ø»ý±â¼÷»ç", "H205µ¿~207µ¿À¸·Î µÇ¾îÀÖÀ¸¸ç, ´ëÇÐ¿ø»ýµéÀÌ ¸Ó¹«¸¥´Ù."),
+	   Building(27, 29, "ºòC", "DGIST Á¤¹®¿¡ ÀÖ´Â Å« DGIST Ç¥½ÄÀÌ´Ù. ¶¼¼­ ¾ÕÀÇ µµ·Î·Î ±¼¸®¸é ±¼·¯°¥ °Í °°´Ù."),
+	   Building(9, 11, "½Ã°£ÀÇÁ¤¿ø", "DGISTÀÇ »óÂ¡¹°·Î ÀÚ¸®ÀâÀº Á¶°¢»ó Áß ÇÏ³ª. Á¤¾à¿ë, ¼¼Á¾´ë¿Õ, ¿¡µð½¼ µîÀÇ À§ÀÎµéÀÌ µÕ±Û°Ô ¼­ ÀÖ°í °¡¿îµ¥¿£ DGIST¸¶Å©°¡ ÀÖ´Ù."),
+	   Building(33, 11, "¾ß¿ÜÀ½¾Ç´ç", "°¡²û À½¾Çµ¿¾Æ¸®°¡ °ø¿¬À» ÇÏ°Å³ª ÁÖº¯ À¯Ä¡¿ø¿¡¼­ ¼ÒÇ³À» ¿À´Â Àå¼ÒÀÌ´Ù. ¿øÇüÀ¸·Î µÈ °ø¿¬ÀåÀÇ ¸ð½ÀÀ» ¶ç°í ÀÖ´Ù."),
+	   Building(23, 13, "¿¬±¸µ¿", "¿¬±¸¿øµé°ú ¼ö¾÷À» ¾È ÇÏ½Ã´Â ±³¼ö´ÔµéÀÌ ¿¬±¸¸¦ ÁøÇàÇÏ´Â °Ç¹°ÀÌ´Ù. ÇÐ»ýµéÀº º¸Åë ÀÌ°÷¿¡ ÇÐ½ÄÀ» ¸ÔÀ¸·¯ µé¸¥´Ù."),
+	   Building(42, 9, "¿¬±¸¿ø»ýÈ°°ü", "¿¬±¸¿øÀÌ °ÅÁÖÇÏ´Â »ýÈ°°üÀÌ´Ù."),
+	   Building(7, 1, "¿µºó°ü", "º»·¡ °Ô½ºÆ®ÇÏ¿ì½º·Î Áö¾îÁ³À¸³ª ÇöÀç´Â ±¹¾ç ÃÑÀå´Ô ¹× °¡Á·ºÐµé²²¼­ °ÅÁÖÁßÀÌ½Ã´Ù."),
+	   Building(40, 25, "Ãà±¸Àå", "DGISTÀÇ Ãà±¸ÀåÀÌ´Ù. Ãà±¸µ¿¾Æ¸®³ª À¯°¡À¾ÀÇ Á¶±âÃà±¸È¸°¡ ÁÖ·Î ÀÌ¿ëÇÏ¸ç, ´ë´Ù¼öÀÇ ÇÐ»ýÀº Ãà±¸Àå°ú ¿¬°áµÈ ÂÊ¹®À¸·Î ÃâÀÔÇÏ±â À§ÇØ ÀÚÁÖ µå³ªµç´Ù. "),
+	   Building(35, 27, "Å×´Ï½ºÀå", "Å×´Ï½º µ¿¾Æ¸®°¡ ÁÖ·Î È°µ¿ÇÏ´Â Å×´Ï½ºÀåÀÌ´Ù. Å¬·¹ÀÌÄÚÆ®ÀÌ´Ù."),
+	   Building(22, 8, "Ç²»ìÀå°ú ³ó±¸Àå", "³ó±¸µ¿¾Æ¸®, Ç²»ìµ¿¾Æ¸®°¡ ÁÖ·Î È°µ¿ÇÏ´Â Àå¼ÒÀÌ´Ù. ¹°·Ð ÀÏ¹Ý ÇÐ»ýµé¿¡°Ôµµ ¿ÀÇÂµÇ¾î ÀÖ´Ù."),
+	   Building(45, 12, "ÇÐºÎ»ý±â¼÷»ç", "H201µ¿~204µ¿À¸·Î µÇ¾îÀÖÀ¸¸ç, ÇÐºÎ»ýµéÀÌ ¸Ó¹«¸¥´Ù. ±â¼÷»ç ½Ä´çÀº ¹®À» ´ÝÀº »óÅÂÀÌ´Ù."),
+	   Building(10, 8, "ÇÐ¼úÁ¤º¸°ü", "¿øÇüÀ¸·Î µÈ 6Ãþ ³ôÀÌÀÇ À¯¸®º® °Ç¹°ÀÌ´Ù. DGISTÀÇ µµ¼­°ü ¿ªÇÒÀ» ÇÏ°í ÀÖÀ¸¸ç, Á¶º° °úÁ¦¿Í ½ºÅÍµð, °³ÀÎ °øºÎ¸¦ À§ÇÑ °ø°£ÀÌ ¸ðµÎ ¸¶·ÃµÇ¾îÀÖ´Ù."),
 };
 
-//í”„ë¡œê·¸ëž¨ì„ ì‹œìž‘í•  ë•Œ í•„ìš”í•œ í•¨ìˆ˜ì´ë‹¤.
-//ê¸°ë³¸ ì°½ì˜ í¬ê¸°ë¥¼ ì¡°ì •í•˜ê³ , ì‹œìž‘ í™”ë©´ì— ì•„ìŠ¤í‚¤ ì•„íŠ¸ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
-//ì˜µì…˜ì„ ì„ íƒí•  ìˆ˜ ìžˆë„ë¡ 4ê°€ì§€ ì„ íƒì§€ë¥¼ ë³´ì—¬ì¤€ë‹¤.
-//ì„ íƒí•œ ì˜µì…˜ì„ ì •ìˆ˜í˜•ìœ¼ë¡œ ë°˜í™˜í•´ì¤€ë‹¤.
+//ÇÁ·Î±×·¥À» ½ÃÀÛÇÒ ¶§ ÇÊ¿äÇÑ ÇÔ¼öÀÌ´Ù.
+//±âº» Ã¢ÀÇ Å©±â¸¦ Á¶Á¤ÇÏ°í, ½ÃÀÛ È­¸é¿¡ ¾Æ½ºÅ° ¾ÆÆ®¸¦ Ãâ·ÂÇØÁØ´Ù.
+//¿É¼ÇÀ» ¼±ÅÃÇÒ ¼ö ÀÖµµ·Ï 4°¡Áö ¼±ÅÃÁö¸¦ º¸¿©ÁØ´Ù.
+//¼±ÅÃÇÑ ¿É¼ÇÀ» Á¤¼öÇüÀ¸·Î ¹ÝÈ¯ÇØÁØ´Ù.
 int StartProgram() {
-	system("mode con cols=155 lines=38 | title ë””ì§€ìŠ¤íŠ¸ ìº í¼ìŠ¤ ì‚¬ì´ë²„ íˆ¬ì–´ í”„ë¡œê·¸ëž¨");
+	system("mode con cols=155 lines=38 | title µðÁö½ºÆ® Ä·ÆÛ½º »çÀÌ¹ö Åõ¾î ÇÁ·Î±×·¥");
 
-	//ê¹œë¹¡ì´ëŠ” ì»¤ì„œë¥¼ ì œê±°í•´ì¤€ë‹¤.
+	//±ôºýÀÌ´Â Ä¿¼­¸¦ Á¦°ÅÇØÁØ´Ù.
 	RemoveCursor();
 
-	//ì‹œìž‘ í™”ë©´ì„ ì„¸íŒ…í•œë‹¤.
+	//½ÃÀÛ È­¸éÀ» ¼¼ÆÃÇÑ´Ù.
 	int x = 47;
 	int y = 20;
 	int option = 0;
@@ -95,12 +95,12 @@ int StartProgram() {
 		CursorPos(0, 0);
 		const char* drawing = "\
 \n               \
-\n                                                           <DGIST ìº í¼ìŠ¤ ì‚¬ì´ë²„ íˆ¬ì–´ í”„ë¡œê·¸ëž¨>\
+\n                                                           <DGIST Ä·ÆÛ½º »çÀÌ¹ö Åõ¾î ÇÁ·Î±×·¥>\
 \n               \
-\n                                                              ì§€ê¸ˆ ë°”ë¡œ DGISTë¥¼ íˆ¬ì–´í•´ë³´ì„¸ìš”!\
+\n                                                              Áö±Ý ¹Ù·Î DGIST¸¦ Åõ¾îÇØº¸¼¼¿ä!\
 \n               \
 \n               \
-\n                                                         (w, s: ë©”ë‰´ ì´ë™, ìŠ¤íŽ˜ì´ìŠ¤ë°”: ë©”ë‰´ ì„ íƒ)\
+\n                                                         (w, s: ¸Þ´º ÀÌµ¿, ½ºÆäÀÌ½º¹Ù: ¸Þ´º ¼±ÅÃ)\
 \n                                                                           _____\
 \n                                                                           |   |\
 \n                                                                           DGIST\
@@ -109,19 +109,19 @@ int StartProgram() {
 \n                                         |o o o|  * * *|: ::|. .|               |o| # # #  |. . |o o o o  |\
 \n                                         |o o o|* * *  |::  |. .| []  []  []  []|o| # # #  |. . |o o o o  |\
 \n                                         |o o o|**  ** |:  :|. .| []  []  []    |o| # # #  |. . |o o o o  |\
-\n                                         |_[]__|__[]___|_||_|___|____________â–¡_|_|___â–¡___|_.|_|____[]___|\
+\n                                         |_[]__|__[]___|_||_|___|____________¡à_|_|___¡à___|_.|_|____[]___|\
 \n";
 		std::cout << drawing << std::endl;
 
 		int start = 20;
 		CursorPos(x, start);
-		std::cout << "ì˜µì…˜ 1: ë¹ ë¥¸ íˆ¬ì–´ë¥¼ ì›í•œë‹¤ë©´? ìµœë‹¨ ê²½ë¡œë¥¼ ì•Œë ¤ë“œë ¤ìš”!" << std::endl;
+		std::cout << "¿É¼Ç 1: ºü¸¥ Åõ¾î¸¦ ¿øÇÑ´Ù¸é? ÃÖ´Ü °æ·Î¸¦ ¾Ë·Áµå·Á¿ä!" << std::endl;
 		CursorPos(x, start + 1);
-		std::cout << "ì˜µì…˜ 2: ë””ì§€ìŠ¤íŠ¸ íˆ¬ì–´ê°€ ì²˜ìŒì´ë¼ë©´? ì½”ìŠ¤ë¥¼ ì¶”ì²œí•´ë“œë ¤ìš”." << std::endl;
+		std::cout << "¿É¼Ç 2: µðÁö½ºÆ® Åõ¾î°¡ Ã³À½ÀÌ¶ó¸é? ÄÚ½º¸¦ ÃßÃµÇØµå·Á¿ä." << std::endl;
 		CursorPos(x, start + 2);
-		std::cout << "ì˜µì…˜ 3: ì‚¬ì´ë²„ë¡œ ìº í¼ìŠ¤ë¥¼ êµ¬ê²½í•˜ê³  ì‹¶ë‹¤ë©´? ìºë¦­í„°ë¥¼ ì›€ì§ì—¬ë³´ì„¸ìš”!" << std::endl;
+		std::cout << "¿É¼Ç 3: »çÀÌ¹ö·Î Ä·ÆÛ½º¸¦ ±¸°æÇÏ°í ½Í´Ù¸é? Ä³¸¯ÅÍ¸¦ ¿òÁ÷¿©º¸¼¼¿ä!" << std::endl;
 		CursorPos(x, start + 3);
-		std::cout << "ì˜µì…˜ 4: ë‹¤ìŒì— í•™êµì—ì„œ ë§Œë‚˜ìš”!" << std::endl;
+		std::cout << "¿É¼Ç 4: ´ÙÀ½¿¡ ÇÐ±³¿¡¼­ ¸¸³ª¿ä!" << std::endl;
 
 		int input = Selector();
 		system("cls");
@@ -151,14 +151,14 @@ int StartProgram() {
 			return option;
 		default:
 			CursorPos(x, 18);
-			std::cout << "â€»wí‚¤ì™€ sí‚¤ë¡œë§Œ ì¡°ìž‘ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤." << std::endl;
+			std::cout << "¡ØwÅ°¿Í sÅ°·Î¸¸ Á¶ÀÛÀÌ °¡´ÉÇÕ´Ï´Ù." << std::endl;
 		}
 	}
 }
 
 int main() {
 	int choice = StartProgram();
-	std::cout << "ì˜µì…˜ " << choice << "ì„(ë¥¼) ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤." << std::endl;
+	std::cout << "¿É¼Ç " << choice << "À»(¸¦) ¼±ÅÃÇÏ¼Ì½À´Ï´Ù." << std::endl;
 
 	if (choice == 1 || choice == 2 || choice == 3) {
 		Map map;
@@ -169,13 +169,13 @@ int main() {
 		int building_num = building_list.size();
 		int structure_num = structure_list.size();
 
-		std::cout << "ìŠ¤íŽ˜ì´ìŠ¤ë°”ë¥¼ ëˆ„ë¥´ì‹œë©´ íˆ¬ì–´ê°€ ì‹œìž‘ë©ë‹ˆë‹¤." << std::endl;
+		std::cout << "½ºÆäÀÌ½º¹Ù¸¦ ´©¸£½Ã¸é Åõ¾î°¡ ½ÃÀÛµË´Ï´Ù." << std::endl;
 
 		while (true) if (Selector() == 0) break;
 
 		switch (choice) {
-			//ì˜µì…˜ 1: ìµœë‹¨ ê²½ë¡œ ì¶œë ¥
-			//ì‹œìž‘ ìœ„ì¹˜ì™€ ë„ì°© ìœ„ì¹˜ë¥¼ ì„ íƒí•˜ë©´ ë‘ ì§€ì ì„ ìž‡ëŠ” ê²½ë¡œë¥¼ ë‚˜íƒ€ë‚¸ë‹¤.
+			//¿É¼Ç 1: ÃÖ´Ü °æ·Î Ãâ·Â
+			//½ÃÀÛ À§Ä¡¿Í µµÂø À§Ä¡¸¦ ¼±ÅÃÇÏ¸é µÎ ÁöÁ¡À» ÀÕ´Â °æ·Î¸¦ ³ªÅ¸³½´Ù.
 		case 1:
 			system("cls");
 			for (int i = 0; i < building_num; i++) {
@@ -190,8 +190,8 @@ int main() {
 				std::cout << std::endl;
 			}
 
-			std::cout << std::endl << "ì¶œë°œ ìœ„ì¹˜ì™€ ë„ì°© ìœ„ì¹˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”." << std::endl;
-			std::cout << "ì˜ˆì‹œ: E7ì—ì„œ ì¶œë°œí•´ì„œ í•™ë¶€ìƒ ê¸°ìˆ™ì‚¬ë¡œ ì´ë™ ì‹œ 7 16 ìž…ë ¥" << std::endl;
+			std::cout << std::endl << "Ãâ¹ß À§Ä¡¿Í µµÂø À§Ä¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä." << std::endl;
+			std::cout << "¿¹½Ã: E7¿¡¼­ Ãâ¹ßÇØ¼­ ÇÐºÎ»ý ±â¼÷»ç·Î ÀÌµ¿ ½Ã 7 16 ÀÔ·Â" << std::endl;
 
 			int start_num, end_num;
 
@@ -203,7 +203,7 @@ int main() {
 				iss >> end_num;
 
 				if (iss.fail()) {
-					std::cout << "ìˆ«ìž ë‘ ê°œë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”." << std::endl;
+					std::cout << "¼ýÀÚ µÎ °³¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." << std::endl;
 					continue;
 				}
 
@@ -215,38 +215,38 @@ int main() {
 			if (start_num <= building_num) {
 				x1 = building_list[start_num - 1].GetXpos();
 				y1 = building_list[start_num - 1].GetYpos();
-				std::cout << "ì¶œë°œ ìœ„ì¹˜ëŠ” ";
+				std::cout << "Ãâ¹ß À§Ä¡´Â ";
 				building_list[start_num - 1].PrintName();
 			}
 			else if (start_num > building_num) {
 				x1 = structure_list[start_num - building_num - 1].GetXpos();
 				y1 = structure_list[start_num - building_num - 1].GetYpos();
-				std::cout << "ì¶œë°œ ìœ„ì¹˜ëŠ” ";
+				std::cout << "Ãâ¹ß À§Ä¡´Â ";
 				structure_list[start_num - building_num - 1].PrintName();
 			}
 			if (end_num <= building_num) {
 				x2 = building_list[end_num - 1].GetXpos();
 				y2 = building_list[end_num - 1].GetYpos();
-				std::cout << "ì´ê³ , ë„ì°© ìœ„ì¹˜ëŠ” ";
+				std::cout << "ÀÌ°í, µµÂø À§Ä¡´Â ";
 				building_list[end_num - 1].PrintName();
-				std::cout << "ìž…ë‹ˆë‹¤." << std::endl;
+				std::cout << "ÀÔ´Ï´Ù." << std::endl;
 			}
 			else if (end_num > building_num) {
 				x2 = structure_list[end_num - building_num - 1].GetXpos();
 				y2 = structure_list[end_num - building_num - 1].GetYpos();
-				std::cout << "ì´ê³ , ë„ì°© ìœ„ì¹˜ëŠ” ";
+				std::cout << "ÀÌ°í, µµÂø À§Ä¡´Â ";
 				structure_list[end_num - building_num - 1].PrintName();
-				std::cout << "ìž…ë‹ˆë‹¤." << std::endl;
+				std::cout << "ÀÔ´Ï´Ù." << std::endl;
 			}
 
-			std::cout << "ìµœë‹¨ ê²½ë¡œë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤." << std::endl << std::endl;
+			std::cout << "ÃÖ´Ü °æ·Î¸¦ Ãâ·ÂÇÕ´Ï´Ù." << std::endl << std::endl;
 			map.FindShortestWay(x1, y1, x2, y2);
 			map.PrintShortestMap();
 
 			break;
 
-			//ì˜µì…˜ 2: ì¶”ì²œ ê²½ë¡œ ì¶œë ¥
-			//ìž¥ì†Œì— ëŒ€í•œ ì„¤ëª…ë§Œì„ ë³´ê³  ìž¥ì†Œë¥¼ ìˆœì„œëŒ€ë¡œ ìž…ë ¥í•˜ë©´, í•´ë‹¹ ìˆœì„œì— ë§žëŠ” ìµœë‹¨ ê²½ë¡œë¥¼ ì´ì–´ì„œ ë‚˜íƒ€ë‚¸ë‹¤.
+			//¿É¼Ç 2: ÃßÃµ °æ·Î Ãâ·Â
+			//Àå¼Ò¿¡ ´ëÇÑ ¼³¸í¸¸À» º¸°í Àå¼Ò¸¦ ¼ø¼­´ë·Î ÀÔ·ÂÇÏ¸é, ÇØ´ç ¼ø¼­¿¡ ¸Â´Â ÃÖ´Ü °æ·Î¸¦ ÀÌ¾î¼­ ³ªÅ¸³½´Ù.
 		case 2:
 			system("cls");
 
@@ -257,8 +257,8 @@ int main() {
 				structure_list[i].PrintExplanation();
 				std::cout << std::endl;
 			}
-			std::cout << "ê°€ê³  ì‹¶ì€ ìž¥ì†Œì˜ ë²ˆí˜¸ë¥¼ ìˆœì„œëŒ€ë¡œ ìž…ë ¥í•˜ì„¸ìš”." << std::endl;
-			std::cout << "ì˜ˆì‹œ: 5ë²ˆ, 3ë²ˆ, 1ë²ˆ ìž¥ì†Œ ìˆœì„œë¡œ ì´ë™ -> 531 ìž…ë ¥" << std::endl;
+			std::cout << "°¡°í ½ÍÀº Àå¼ÒÀÇ ¹øÈ£¸¦ ¼ø¼­´ë·Î ÀÔ·ÂÇÏ¼¼¿ä." << std::endl;
+			std::cout << "¿¹½Ã: 5¹ø, 3¹ø, 1¹ø Àå¼Ò ¼ø¼­·Î ÀÌµ¿ -> 531 ÀÔ·Â" << std::endl;
 
 			std::cin >> sequence;
 
@@ -272,16 +272,16 @@ int main() {
 
 			system("cls");
 			structure_list[sequence[0] - '0'].PrintName();
-			std::cout << "ì—ì„œ ì¶œë°œí•˜ì—¬ ";
+			std::cout << "¿¡¼­ Ãâ¹ßÇÏ¿© ";
 			structure_list[sequence[sequence.length() - 1] - '0'].PrintName();
-			std::cout << "ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤." << std::endl;
-			std::cout << "ì¶”ì²œ ê²½ë¡œë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤." << std::endl << std::endl;
+			std::cout << "À¸·Î ÀÌµ¿ÇÕ´Ï´Ù." << std::endl;
+			std::cout << "ÃßÃµ °æ·Î¸¦ Ãâ·ÂÇÕ´Ï´Ù." << std::endl << std::endl;
 
 			map.PrintShortestMap();
 			break;
 
-			//ì˜µì…˜ 3: ìºë¦­í„°ë¥¼ ì§€ë„ìƒì—ì„œ ì¡°ìž‘
-			//ìºë¦­í„°ê°€ íŠ¹ì • ìž¥ì†Œì— ë„ì°©í•˜ë©´ ê´€ë ¨ ì„¤ëª…ì´ ì¶œë ¥ëœë‹¤.
+			//¿É¼Ç 3: Ä³¸¯ÅÍ¸¦ Áöµµ»ó¿¡¼­ Á¶ÀÛ
+			//Ä³¸¯ÅÍ°¡ Æ¯Á¤ Àå¼Ò¿¡ µµÂøÇÏ¸é °ü·Ã ¼³¸íÀÌ Ãâ·ÂµÈ´Ù.
 		case 3:
 			Character person;
 
@@ -289,7 +289,7 @@ int main() {
 				system("cls");
 
 				map.PrintInformation();
-				std::cout << "w: ìœ„, s: ì•„ëž˜, a: ì™¼ìª½, d: ì˜¤ë¥¸ìª½, ìŠ¤íŽ˜ì´ìŠ¤ë°”: ì¢…ë£Œ";
+				std::cout << "w: À§, s: ¾Æ·¡, a: ¿ÞÂÊ, d: ¿À¸¥ÂÊ, ½ºÆäÀÌ½º¹Ù: Á¾·á";
 
 				CursorPos(0, 33);
 				for (int i = 0; i < structure_num; i++) {
@@ -320,7 +320,7 @@ int main() {
 		}
 	}
 	else {
-		std::cout << "í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤." << std::endl;
+		std::cout << "ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù." << std::endl;
 	}
 	return 0;
 }
