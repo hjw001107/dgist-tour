@@ -231,6 +231,7 @@ public:
                     ChangeColor(COLOR_WHITE, COLOR_BLUE);
                     std::cout << "¢È";
                     ChangeColor();
+                    ChangeColor();
                 }
                 else if (map_data[i][j] == BLOCK_WAY) {
                     ChangeColor(COLOR_WHITE, COLOR_RED);
