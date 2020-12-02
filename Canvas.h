@@ -24,7 +24,7 @@ public:
     }
 
     //각 클래스에서 출력이 필요한 정보를 출력한다
-    virtual void PrintInformation() {}
+    virtual void PrintInformation() = 0;
 };
 
 //인터페이스를 제공하는 클래스이다.
@@ -41,7 +41,7 @@ public:
     }
 
     //place의 설명을 출력하는 함수이다.
-    virtual void PrintExplanation() {
+    virtual void PrintInformation() override final {
         std::cout << p_explanation << std::endl;
     }
 };
