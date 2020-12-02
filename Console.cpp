@@ -16,7 +16,6 @@ void CursorPos(int x, int y) {
 
 void RemoveCursor() {
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO ConsoleCursor;
 	ConsoleCursor.bVisible = 0;
 	ConsoleCursor.dwSize = 1;
