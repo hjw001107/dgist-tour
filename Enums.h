@@ -1,6 +1,6 @@
 #pragma once
 
-//Áöµµ ¹è¿­¿¡ ÀúÀåµÈ ¼ýÀÚÀÇ ÀÇ¹ÌÀÌ´Ù.
+//ì§€ë„ ë°°ì—´ì— ì €ìž¥ëœ ìˆ«ìžì˜ ì˜ë¯¸ì´ë‹¤.
 enum Block {
     BLOCK_ROAD = 0,
     BLOCK_WALL = 1,
@@ -9,7 +9,7 @@ enum Block {
     BLOCK_WAY = 4,
 };
 
-//ÄÜ¼ÖÃ¢¿¡ Ãâ·ÂµÇ´Â ±ÛÀÚ, ¹è°æÀÇ »ö»óÀÌ´Ù.
+//ì½˜ì†”ì°½ì— ì¶œë ¥ë˜ëŠ” ê¸€ìž, ë°°ê²½ì˜ ìƒ‰ìƒì´ë‹¤.
 enum Color {
     COLOR_BLACK = 0,
     COLOR_BLUE = 1,
@@ -29,7 +29,7 @@ enum Color {
     COLOR_WHITE = 15,
 };
 
-//w, a, s, d Å°·Î ÀÔ·ÂÇÑ ¹æÇâÀÌ´Ù.
+//w, a, s, d í‚¤ë¡œ ìž…ë ¥í•œ ë°©í–¥ì´ë‹¤.
 enum Direction {
     DIRECTION_UP = 1,
     DIRECTION_DOWN = 2,

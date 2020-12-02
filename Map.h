@@ -1,18 +1,18 @@
 #pragma once
 
-//ÁöµµÀÇ Á¤º¸¸¦ ÀúÀåÇÏ°í ÃÖ´Ü °æ·Î Ã£±â¸¦ Áö¿øÇÏ´Â Å¬·¡½ºÀÌ´Ù.
+//ì§€ë„ì˜ ì •ë³´ë¥¼ ì €ì¥í•˜ê³  ìµœë‹¨ ê²½ë¡œ ì°¾ê¸°ë¥¼ ì§€ì›í•˜ëŠ” í´ë˜ìŠ¤ì´ë‹¤.
 class Map : public Canvas {
 private:
-    int map_width;     //¸ÊÀÇ ³Êºñ
-    int map_height;    //¸ÊÀÇ ³ôÀÌ
-    int structure_num;  //Á¶Çü¹°ÀÇ °³¼ö¸¦ ÀúÀå
-    int building_num;   //°Ç¹°ÀÇ °³¼ö¸¦ ÀúÀå
+    int map_width;     //ë§µì˜ ë„ˆë¹„
+    int map_height;    //ë§µì˜ ë†’ì´
+    int structure_num;  //ì¡°í˜•ë¬¼ì˜ ê°œìˆ˜ë¥¼ ì €ì¥
+    int building_num;   //ê±´ë¬¼ì˜ ê°œìˆ˜ë¥¼ ì €ì¥
 
-    int pos, cnt, n;  //ÃÖ´Ü °æ·Î¸¦ Ã£±â À§ÇØ ÇÊ¿äÇÑ Á¤¼ö
-    int x[40000], y[40000];                //ÃÖ´Ü °æ·Î¸¦ Ã£±â À§ÇØ ÇÊ¿äÇÑ ¹è¿­
-    std::vector < std::vector <int> > map_data;      //¸Ê Á¤º¸¸¦ ÀúÀåÇÏ´Â ÀÌÁß º¤ÅÍ
-    std::vector < std::vector <int> > temp;          //ÃÖ´Ü °æ·Î¸¦ Ã£±â À§ÇØ ÇÊ¿äÇÑ ÀÌÁß º¤ÅÍ
-    std::vector < std::vector <int> > shortest_map;  //ÃÖ´Ü °æ·Î¸¦ ÀúÀåÇÏ´Â ÀÌÁß º¤ÅÍ
+    int pos, cnt, n;  //ìµœë‹¨ ê²½ë¡œë¥¼ ì°¾ê¸° ìœ„í•´ í•„ìš”í•œ ì •ìˆ˜
+    int x[40000], y[40000];                //ìµœë‹¨ ê²½ë¡œë¥¼ ì°¾ê¸° ìœ„í•´ í•„ìš”í•œ ë°°ì—´
+    std::vector < std::vector <int> > map_data;      //ë§µ ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” ì´ì¤‘ ë²¡í„°
+    std::vector < std::vector <int> > temp;          //ìµœë‹¨ ê²½ë¡œë¥¼ ì°¾ê¸° ìœ„í•´ í•„ìš”í•œ ì´ì¤‘ ë²¡í„°
+    std::vector < std::vector <int> > shortest_map;  //ìµœë‹¨ ê²½ë¡œë¥¼ ì €ì¥í•˜ëŠ” ì´ì¤‘ ë²¡í„°
 public:
     Map() {
         map_width = 52;
@@ -60,23 +60,23 @@ public:
         building_num = 9;
     }
 
-    //ÁöµµÀÇ ½ÇÁ¦ ³Êºñ¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    //ì§€ë„ì˜ ì‹¤ì œ ë„ˆë¹„ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     int GetMapWidth() {
         return map_width;
     }
 
-    //ÁöµµÀÇ ½ÇÁ¦ ³ôÀÌ¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    //ì§€ë„ì˜ ì‹¤ì œ ë†’ì´ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     int GetMapHeight() {
         return map_height;
     }
 
-    //Áöµµ x, yÁÂÇ¥¿¡ ÇØ´çÇÏ´Â Á¤º¸¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    //ì§€ë„ x, yì¢Œí‘œì— í•´ë‹¹í•˜ëŠ” ì •ë³´ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     int GetMapBlock(int x, int y) {
         return map_data[y][x];
     }
 
-    //ÃÖ´Ü °æ·Î¸¦ Ã£À» ¶§ x, yÀÇ ÁÂÇ¥¸¦ x[], y[] ¹è¿­¿¡ ÀúÀåÇÑ´Ù.
-    //tempÀÇ ÁÂÇ¥¿¡´Â cnt¸¦ ´ëÀÔÇÔÀ¸·Î½á °æ·Î°¡ ¾î¶»°Ô ÀÌ·ç¾îÁ®ÀÖ´ÂÁö ÀúÀåÇÑ´Ù.
+    //ìµœë‹¨ ê²½ë¡œë¥¼ ì°¾ì„ ë•Œ x, yì˜ ì¢Œí‘œë¥¼ x[], y[] ë°°ì—´ì— ì €ì¥í•œë‹¤.
+    //tempì˜ ì¢Œí‘œì—ëŠ” cntë¥¼ ëŒ€ì…í•¨ìœ¼ë¡œì¨ ê²½ë¡œê°€ ì–´ë–»ê²Œ ì´ë£¨ì–´ì ¸ìˆëŠ”ì§€ ì €ì¥í•œë‹¤.
     void Push(int xx, int yy, int x_pos, int y_pos) {
         x[cnt] = xx;
         y[cnt] = yy;
@@ -84,8 +84,8 @@ public:
         cnt++;
     }
 
-    //FindShortestWay()¸¦ ½ÇÇàÇÏ¸é map_data¿Í temp ³»ºÎÀÇ °ªÀÌ º¯ÇØ ¿¬¼ÓÀûÀ¸·Î ÃÖ´Ü°Å¸®¸¦ Ã£À» ¼ö ¾ø´Ù.
-    //µû¶ó¼­ ÃÖ´Ü °æ·Î¸¦ Ã£Àº ÈÄ ¾Æ·¡ ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© map_data¿Í temp¸¦ ¿ø·¡ÀÇ °ªÀ¸·Î µ¹·ÁÁØ´Ù.
+    //FindShortestWay()ë¥¼ ì‹¤í–‰í•˜ë©´ map_dataì™€ temp ë‚´ë¶€ì˜ ê°’ì´ ë³€í•´ ì—°ì†ì ìœ¼ë¡œ ìµœë‹¨ê±°ë¦¬ë¥¼ ì°¾ì„ ìˆ˜ ì—†ë‹¤.
+    //ë”°ë¼ì„œ ìµœë‹¨ ê²½ë¡œë¥¼ ì°¾ì€ í›„ ì•„ë˜ í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ map_dataì™€ tempë¥¼ ì›ë˜ì˜ ê°’ìœ¼ë¡œ ëŒë ¤ì¤€ë‹¤.
     void InitializeMap() {
         temp = map_data = {
         { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
@@ -127,11 +127,11 @@ public:
         }
     }
 
-    //BFS ¹æ½ÄÀ¸·Î ÃÖ´Ü °æ·Î¸¦ Ã£¾ÆÁÖ´Â ÇÔ¼öÀÌ´Ù.
-    //¸Å°³º¯¼ö·Î ½ÃÀÛ ÁÂÇ¥, µµÂø ÁÂÇ¥¸¦ ÀÔ·ÂÇÑ´Ù.
-    //ÇÔ¼ö ³»ºÎ¿¡¼­ Push(), InitializeMap()À» È£ÃâÇÑ´Ù.
-    //ÇÔ¼ö µ¿ÀÛ µµÁß map_data¿Í temp¿¡ ÀúÀåµÈ °ªÀÌ ¹Ù²î°í shortest_map¿¡ ÃÖ´Ü °æ·Î°¡ ±â·ÏµÈ´Ù.
-    //ÇÔ¼ö°¡ Á¾·áµÇ¸é map_data¿Í temp°¡ ÃÊ±âÈ­µÇ¾î shortest_map¸¸ ¹Ù²î¾îÀÖ°Ô µÈ´Ù.
+    //BFS ë°©ì‹ìœ¼ë¡œ ìµœë‹¨ ê²½ë¡œë¥¼ ì°¾ì•„ì£¼ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    //ë§¤ê°œë³€ìˆ˜ë¡œ ì‹œì‘ ì¢Œí‘œ, ë„ì°© ì¢Œí‘œë¥¼ ì…ë ¥í•œë‹¤.
+    //í•¨ìˆ˜ ë‚´ë¶€ì—ì„œ Push(), InitializeMap()ì„ í˜¸ì¶œí•œë‹¤.
+    //í•¨ìˆ˜ ë™ì‘ ë„ì¤‘ map_dataì™€ tempì— ì €ì¥ëœ ê°’ì´ ë°”ë€Œê³  shortest_mapì— ìµœë‹¨ ê²½ë¡œê°€ ê¸°ë¡ëœë‹¤.
+    //í•¨ìˆ˜ê°€ ì¢…ë£Œë˜ë©´ map_dataì™€ tempê°€ ì´ˆê¸°í™”ë˜ì–´ shortest_mapë§Œ ë°”ë€Œì–´ìˆê²Œ ëœë‹¤.
     void FindShortestWay(int start_x, int start_y, int end_x, int end_y) {
         x[0] = start_x;
         y[0] = start_y;
@@ -139,10 +139,10 @@ public:
         cnt = 1;
 
         while (pos < cnt && (x[pos] != end_x || y[pos] != end_y)) {
-            //Àç¹æ¹®À» ¹æÁöÇÏ±â À§ÇØ ÇöÀç Å½»ö ÁßÀÎ ÁÂÇ¥ÀÇ °ªÀ» ¹Ù²ãÁØ´Ù.
+            //ì¬ë°©ë¬¸ì„ ë°©ì§€í•˜ê¸° ìœ„í•´ í˜„ì¬ íƒìƒ‰ ì¤‘ì¸ ì¢Œí‘œì˜ ê°’ì„ ë°”ê¿”ì¤€ë‹¤.
             map_data[y[pos]][x[pos]] = 1;
 
-            //ÁÖÀ§ ÁÂÇ¥°¡ º®ÀÌ ¾Æ´Ò °æ¿ì(°¥ ¼ö ÀÖ´Â ºí·ÏÀÏ °æ¿ì) Push()¸¦ ½ÇÇàÇÑ´Ù.
+            //ì£¼ìœ„ ì¢Œí‘œê°€ ë²½ì´ ì•„ë‹ ê²½ìš°(ê°ˆ ìˆ˜ ìˆëŠ” ë¸”ë¡ì¼ ê²½ìš°) Push()ë¥¼ ì‹¤í–‰í•œë‹¤.
             if (y[pos] > 0 && ((map_data[y[pos] - 1][x[pos]] != 1))) {
                 Push(x[pos], y[pos] - 1, x[pos], y[pos]);
             }
@@ -158,9 +158,9 @@ public:
 
             pos++;
         }
-        //¿©±â±îÁö ÃÖ´Ü °æ·Î¸¦ Å½»öÇÏ±â À§ÇÑ Á¤º¸´Â ¸ğµÎ Å½»öµÇ°í, ¾Æ·¡ºÎÅÍ´Â ÃÖ´Ü °æ·Î¸¦ ÇÏ³ª·Î ¸¸µé¾î ÀúÀåÇÑ´Ù.
-        //temp¿¡ ÀúÀåµÈ ¼ö¸¦ ±âÁØÀ¸·Î, µµÂø ÁöÁ¡¿¡¼­ºÎÅÍ Ãâ¹ß ÁöÁ¡±îÁöÀÇ °æ·Î¸¦ ÀÕ´Â´Ù.
-        //µµÂø ÁöÁ¡¿¡¼­ ½ÃÀÛÇÏ¿© ÁÖÀ§ ÁÂÇ¥ÀÇ °ª Áß °¡Àå ÀÛÀº °ªÀ» °¡Áø ÁÂÇ¥°¡ ÃÖ´Ü °æ·Î¿¡ ÇØ´çÇÑ´Ù°í °¡Á¤ÇÑ´Ù.
+        //ì—¬ê¸°ê¹Œì§€ ìµœë‹¨ ê²½ë¡œë¥¼ íƒìƒ‰í•˜ê¸° ìœ„í•œ ì •ë³´ëŠ” ëª¨ë‘ íƒìƒ‰ë˜ê³ , ì•„ë˜ë¶€í„°ëŠ” ìµœë‹¨ ê²½ë¡œë¥¼ í•˜ë‚˜ë¡œ ë§Œë“¤ì–´ ì €ì¥í•œë‹¤.
+        //tempì— ì €ì¥ëœ ìˆ˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ, ë„ì°© ì§€ì ì—ì„œë¶€í„° ì¶œë°œ ì§€ì ê¹Œì§€ì˜ ê²½ë¡œë¥¼ ì‡ëŠ”ë‹¤.
+        //ë„ì°© ì§€ì ì—ì„œ ì‹œì‘í•˜ì—¬ ì£¼ìœ„ ì¢Œí‘œì˜ ê°’ ì¤‘ ê°€ì¥ ì‘ì€ ê°’ì„ ê°€ì§„ ì¢Œí‘œê°€ ìµœë‹¨ ê²½ë¡œì— í•´ë‹¹í•œë‹¤ê³  ê°€ì •í•œë‹¤.
 
         pos--;
         temp[y[pos]][x[pos]] = cnt;
@@ -172,8 +172,8 @@ public:
 
         int xptr = end_x;
         int yptr = end_y;
-        int before = temp[yptr][xptr];   //ÁÖÀ§ 4°³ÀÇ ÁÂÇ¥ Áß °¡Àå ÀÛÀº °ªÀ» ÀúÀåÇÏ´Â º¯¼ö
-        shortest_map[yptr][xptr] = shortest_map[start_y][start_x] = 4;  //ÃÖ´Ü °æ·Î¿¡ ÇØ´çÇÏ´Â ÁÂÇ¥¸¦ 4·Î Ç¥½Ã
+        int before = temp[yptr][xptr];   //ì£¼ìœ„ 4ê°œì˜ ì¢Œí‘œ ì¤‘ ê°€ì¥ ì‘ì€ ê°’ì„ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
+        shortest_map[yptr][xptr] = shortest_map[start_y][start_x] = 4;  //ìµœë‹¨ ê²½ë¡œì— í•´ë‹¹í•˜ëŠ” ì¢Œí‘œë¥¼ 4ë¡œ í‘œì‹œ
 
         do {
             if (xptr + 1 < map_width - 1) {
@@ -208,33 +208,33 @@ public:
         InitializeMap();
     }
 
-    //map_data¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    //map_dataë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     void PrintInformation() final {
         for (int i = 0; i < map_height; i++) {
             for (int j = 0; j < map_width; j++) {
                 if (map_data[i][j] == BLOCK_ROAD || map_data[i][j] == 10) {
                     ChangeColor(COLOR_LIGHTGRAY, COLOR_DARKGRAY);
-                    std::cout << "¡à";
+                    std::cout << "â–¡";
                     ChangeColor();
                 }
                 else if (map_data[i][j] == BLOCK_WALL) {
                     ChangeColor(COLOR_LIGHTGREEN, COLOR_GREEN);
-                    std::cout << "¡à";
+                    std::cout << "â–¡";
                     ChangeColor();
                 }
                 else if (map_data[i][j] == BLOCK_STRUCTURE || map_data[i][j] == 12) {
                     ChangeColor(COLOR_WHITE, COLOR_LIGHTRED);
-                    std::cout << "¢À";
+                    std::cout << "â™£";
                     ChangeColor();
                 }
                 else if (map_data[i][j] == BLOCK_BUILDING || map_data[i][j] == 13) {
                     ChangeColor(COLOR_WHITE, COLOR_BLUE);
-                    std::cout << "¢È";
+                    std::cout << "â–¥";
                     ChangeColor();
                 }
                 else if (map_data[i][j] == BLOCK_WAY) {
                     ChangeColor(COLOR_WHITE, COLOR_RED);
-                    std::cout << "¡à";
+                    std::cout << "â–¡";
                     ChangeColor();
                 }
             }
@@ -242,33 +242,33 @@ public:
         }
     }
 
-    //shortest_mapÀ» Ãâ·ÂÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    //shortest_mapì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     void PrintShortestMap() {
         for (int i = 0; i < map_height; i++) {
             for (int j = 0; j < map_width; j++) {
                 if (shortest_map[i][j] == BLOCK_ROAD || shortest_map[i][j] == 10) {
                     ChangeColor(COLOR_LIGHTGRAY, COLOR_DARKGRAY);
-                    std::cout << "¡à";
+                    std::cout << "â–¡";
                     ChangeColor();
                 }
                 else if (shortest_map[i][j] == BLOCK_WALL) {
                     ChangeColor(COLOR_LIGHTGREEN, COLOR_GREEN);
-                    std::cout << "¡à";
+                    std::cout << "â–¡";
                     ChangeColor();
                 }
                 else if (shortest_map[i][j] == BLOCK_STRUCTURE || shortest_map[i][j] == 12) {
                     ChangeColor(COLOR_WHITE, COLOR_LIGHTRED);
-                    std::cout << "¢À";
+                    std::cout << "â™£";
                     ChangeColor();
                 }
                 else if (shortest_map[i][j] == BLOCK_BUILDING || shortest_map[i][j] == 13) {
                     ChangeColor(COLOR_WHITE, COLOR_BLUE);
-                    std::cout << "¢È";
+                    std::cout << "â–¥";
                     ChangeColor();
                 }
                 else if (shortest_map[i][j] == BLOCK_WAY) {
                     ChangeColor(COLOR_WHITE, COLOR_RED);
-                    std::cout << "¡à";
+                    std::cout << "â–¡";
                     ChangeColor();
                 }
             }

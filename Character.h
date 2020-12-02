@@ -4,25 +4,25 @@
 #include "Enums.h"
 #include "Map.h"
 
-//Áöµµ¸¦ Á÷Á¢ µ¹¾Æ´Ù´Ò ¼ö ÀÖ´Â Ä³¸¯ÅÍ¿¡ °üÇÑ Å¬·¡½ºÀÌ´Ù.
-//x, yÁÂÇ¥¸¦ ¸â¹ö º¯¼ö·Î °¡Áö¸ç, ÀÌµ¿°ú Ãâ·ÂÀ» ´ã´çÇÏ´Â ¸â¹ö ÇÔ¼ö¸¦ °¡Áø´Ù.
+//ì§€ë„ë¥¼ ì§ì ‘ ëŒì•„ë‹¤ë‹ ìˆ˜ ìžˆëŠ” ìºë¦­í„°ì— ê´€í•œ í´ëž˜ìŠ¤ì´ë‹¤.
+//x, yì¢Œí‘œë¥¼ ë©¤ë²„ ë³€ìˆ˜ë¡œ ê°€ì§€ë©°, ì´ë™ê³¼ ì¶œë ¥ì„ ë‹´ë‹¹í•˜ëŠ” ë©¤ë²„ í•¨ìˆ˜ë¥¼ ê°€ì§„ë‹¤.
 class Character : public Canvas {
 public:
-    //Ã³À½ À§Ä¡¸¦ Á¤ÇÏÁö ¾Ê´Â °æ¿ì ÇÐºÎ»ý ±â¼÷»ç¿¡¼­ Ãâ¹ß
+    //ì²˜ìŒ ìœ„ì¹˜ë¥¼ ì •í•˜ì§€ ì•ŠëŠ” ê²½ìš° í•™ë¶€ìƒ ê¸°ìˆ™ì‚¬ì—ì„œ ì¶œë°œ
     Character() {
         x_pos = 45;
         y_pos = 12;
     }
-    //Ã³À½ À§Ä¡¸¦ Á¤ÇÒ °æ¿ì ÇØ´ç À§Ä¡¿¡¼­ Ãâ¹ß
+    //ì²˜ìŒ ìœ„ì¹˜ë¥¼ ì •í•  ê²½ìš° í•´ë‹¹ ìœ„ì¹˜ì—ì„œ ì¶œë°œ
     Character(int x, int y) {
         x_pos = x;
         y_pos = y;
     }
     ~Character() {}
 
-    //Ä³¸¯ÅÍ¸¦ Áöµµ»ó¿¡¼­ ¿òÁ÷ÀÌ´Â ÇÔ¼öÀÌ´Ù.
-    //ÁöµµÀÇ ¹æÇâ, Áöµµ °´Ã¼¸¦ ¸Å°³º¯¼ö·Î ÀÌ¿ëÇÑ´Ù.
-    //Áöµµ¸¦ ³Ñ¾î°¡Áö ¾ÊÀ¸¸é¼­ ±æ, °Ç¹°, Á¶Çü¹°¸¸ ÀÌµ¿ÇÒ ¼ö ÀÖµµ·Ï Á¦ÇÑµÇ¾îÀÖ´Ù.
+    //ìºë¦­í„°ë¥¼ ì§€ë„ìƒì—ì„œ ì›€ì§ì´ëŠ” í•¨ìˆ˜ì´ë‹¤.
+    //ì§€ë„ì˜ ë°©í–¥, ì§€ë„ ê°ì²´ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ì´ìš©í•œë‹¤.
+    //ì§€ë„ë¥¼ ë„˜ì–´ê°€ì§€ ì•Šìœ¼ë©´ì„œ ê¸¸, ê±´ë¬¼, ì¡°í˜•ë¬¼ë§Œ ì´ë™í•  ìˆ˜ ìžˆë„ë¡ ì œí•œë˜ì–´ìžˆë‹¤.
     void MovePlayer(int direction, Map map) {
         int height = map.GetMapHeight();
         int width = map.GetMapWidth();
@@ -49,11 +49,11 @@ public:
         }
     }
 
-    //Ä³¸¯ÅÍ¸¦ Áöµµ¿¡ Ãâ·ÂÇÏ´Â ÇÔ¼öÀÌ´Ù.
+    //ìºë¦­í„°ë¥¼ ì§€ë„ì— ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
     void PrintInformation() final {
         CursorPos(x_pos * 2, y_pos);
         ChangeColor(COLOR_YELLOW, COLOR_DARKGRAY);
-        std::cout << "¡Ü";
+        std::cout << "â—";
         ChangeColor();
     }
 };

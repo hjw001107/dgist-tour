@@ -5,7 +5,7 @@
 #include <conio.h>
 #include <ctype.h>
 
-//ÄÜ¼ÖÃ¢¿¡ Ãâ·ÂÇÒ ¶§ Ä¿¼­ÀÇ À§Ä¡¸¦ ¹Ù²ãÁÖ´Â ÇÔ¼öÀÌ´Ù.
+//ì½˜ì†”ì°½ì— ì¶œë ¥í•  ë•Œ ì»¤ì„œì˜ ìœ„ì¹˜ë¥¼ ë°”ê¿”ì£¼ëŠ” í•¨ìˆ˜ì´ë‹¤.
 void CursorPos(int x, int y) {
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD pos;
@@ -22,15 +22,15 @@ void RemoveCursor() {
 	SetConsoleCursorInfo(consoleHandle, &ConsoleCursor);
 }
 
-//ÄÜ¼ÖÃ¢¿¡ ±ÛÀÚ¸¦ Ãâ·ÂÇÒ ¶§ ±ÛÀÚ¿Í ¹è°æÀÇ »öÀ» ¹Ù²ã¼­ Ãâ·ÂÇÏ°Ô ÇØÁÖ´Â ÇÔ¼öÀÌ´Ù.
-//±ÛÀÚÀÇ »ö, ¹è°æÀÇ »öÀ» Â÷·Ê·Î ¸Å°³º¯¼ö·Î ¹Þ´Â´Ù.
+//ì½˜ì†”ì°½ì— ê¸€ìžë¥¼ ì¶œë ¥í•  ë•Œ ê¸€ìžì™€ ë°°ê²½ì˜ ìƒ‰ì„ ë°”ê¿”ì„œ ì¶œë ¥í•˜ê²Œ í•´ì£¼ëŠ” í•¨ìˆ˜ì´ë‹¤.
+//ê¸€ìžì˜ ìƒ‰, ë°°ê²½ì˜ ìƒ‰ì„ ì°¨ë¡€ë¡œ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ëŠ”ë‹¤.
 void ChangeColor(int text, int background) {
 	int color = text + background * 16;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-//w, a, s, d Å°¸¦ ÀÌ¿ëÇÏ¿© ¹æÇâÀ» ¼±ÅÃÇÏ´Â ÇÔ¼öÀÌ´Ù.
-//¼±ÅÃÇÑ ¹æÇâÀ» Á¤¼öÇüÀ¸·Î ¹ÝÈ¯ÇÑ´Ù.
+//w, a, s, d í‚¤ë¥¼ ì´ìš©í•˜ì—¬ ë°©í–¥ì„ ì„ íƒí•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+//ì„ íƒí•œ ë°©í–¥ì„ ì •ìˆ˜í˜•ìœ¼ë¡œ ë°˜í™˜í•œë‹¤.
 int Selector() {
 	char input = _getch();
 	switch (tolower(input)) {
