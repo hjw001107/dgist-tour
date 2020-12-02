@@ -124,171 +124,197 @@ int StartProgram() {
 }
 
 int main() {
-	int choice = StartProgram();
-	std::cout << "옵션 " << choice << "을(를) 선택하셨습니다." << std::endl;
+    int choice = StartProgram();
+    std::cout << "옵션 " << choice << "을(를) 선택하셨습니다." << std::endl;
 
-	if (choice == 1 || choice == 2 || choice == 3) {
-		Map map;
-		std::string sequence;
-		int x1, y1, x2, y2;
+    if (choice == 1 || choice == 2 || choice == 3) {
+        Map map;
+        std::string sequence, temp;
+        int sequence_count;
+        int x1, y1, x2, y2;
 
 
-		int building_num = building_list.size();
-		int structure_num = structure_list.size();
+        int building_num = building_list.size();
+        int structure_num = structure_list.size();
 
-		std::cout << "스페이스바를 누르시면 투어가 시작됩니다." << std::endl;
+        std::cout << "스페이스바를 누르시면 투어가 시작됩니다." << std::endl;
 
-		while (true) if (Selector() == 0) break;
+        while (true) if (Selector() == 0) break;
 
-		switch (choice) {
-			//옵션 1: 최단 경로 출력
-			//시작 위치와 도착 위치를 선택하면 두 지점을 잇는 경로를 나타낸다.
+        switch (choice) {
+            //옵션 1: 최단 경로 출력
+            //시작 위치와 도착 위치를 선택하면 두 지점을 잇는 경로를 나타낸다.
 
-		case 1:
-			system("cls");
-			for (int i = 0; i < building_num; i++) {
-				std::cout << i + 1 << ". ";
-				building_list[i].PrintName();
-				std::cout << std::endl;
-			}
+        case 1:
+            int start_num, end_num;
+            do {
+                try {
+                    system("cls");
 
-			for (int i = 0; i < structure_num; i++) {
-				std::cout << i + 24 << ". ";
-				structure_list[i].PrintName();
-				std::cout << std::endl;
-			}
+                    for (int i = 0; i < building_num; i++) {
+                        std::cout << i + 1 << ". ";
+                        building_list[i].PrintName();
+                        std::cout << std::endl;
+                    }
 
-			std::cout << std::endl << "출발 위치와 도착 위치를 입력하세요." << std::endl;
-			std::cout << "예시: E7에서 출발해서 학부생 기숙사로 이동 시 7 16 입력" << std::endl;
+                    for (int i = 0; i < structure_num; i++) {
+                        std::cout << i + 24 << ". ";
+                        structure_list[i].PrintName();
+                        std::cout << std::endl;
+                    }
 
-			int start_num, end_num;
+                    std::cout << std::endl << "출발 위치와 도착 위치를 입력하세요." << std::endl;
+                    std::cout << "예시: E7에서 출발해서 학부생 기숙사로 이동 시 7 16 입력" << std::endl;
 
-			while (true) {
-				std::string str;
-				std::getline(std::cin, str);
-				std::istringstream iss{ str };
-				iss >> start_num;
-				iss >> end_num;
+                    std::string str;
+                    std::getline(std::cin, str);
+                    std::istringstream iss{ str };
+                    iss >> start_num;
+                    iss >> end_num;
 
-				if (iss.fail()) {
-					std::cout << "숫자 두 개를 입력해주세요." << std::endl;
-					continue;
-				}
+                    if (iss.fail()) {
+                        throw iss.str();
+                    }
 
-				break;
-			}
+                    if (start_num <= 0 || start_num > 32) {
+                        throw start_num;
+                    }
+                    if (end_num <= 0 || end_num > 32) {
+                        throw end_num;
+                    }
+                    if (start_num == end_num) {
+                        throw start_num;
+                    }
+                    
+                    system("cls");
+                    if (start_num <= building_num) {
+                        x1 = building_list[start_num - 1].GetXpos();
+                        y1 = building_list[start_num - 1].GetYpos();
+                        std::cout << "출발 위치는 ";
+                        building_list[start_num - 1].PrintName();
+                    }
+                    else if (start_num > building_num) {
+                        x1 = structure_list[start_num - building_num - 1].GetXpos();
+                        y1 = structure_list[start_num - building_num - 1].GetYpos();
+                        std::cout << "출발 위치는 ";
+                        structure_list[start_num - building_num - 1].PrintName();
+                    }
+                    if (end_num <= building_num) {
+                        x2 = building_list[end_num - 1].GetXpos();
+                        y2 = building_list[end_num - 1].GetYpos();
+                        std::cout << "이고, 도착 위치는 ";
+                        building_list[end_num - 1].PrintName();
+                        std::cout << "입니다." << std::endl;
+                    }
+                    else if (end_num > building_num) {
+                        x2 = structure_list[end_num - building_num - 1].GetXpos();
+                        y2 = structure_list[end_num - building_num - 1].GetYpos();
+                        std::cout << "이고, 도착 위치는 ";
+                        structure_list[end_num - building_num - 1].PrintName();
+                        std::cout << "입니다." << std::endl;
+                    }
 
-			system("cls");
+                    std::cout << "최단 경로를 출력합니다." << std::endl << std::endl;
+                    map.FindShortestWay(x1, y1, x2, y2);
+                    map.PrintShortestMap();
+                    break;
+                }
+                catch (int expn) {
+                    system("cls");
+                    std::cout << expn << ": 잘못된 숫자를 입력하셨습니다." << std::endl;
+                }
+                catch (std::string expn) {
+                    system("cls");
+                    std::cout << expn << ": 문자를 입력하셨습니다." << std::endl;
+                }
+                std::cout << "1에서 32까지의 숫자를 중복하지 않고 입력해주세요." << std::endl;
+                std::cout << "스페이스바를 누르시면 목록으로 다시 돌아갑니다." << std::endl;
+                while (true) {
+                    if (Selector() == DIRECTION_ENTER) break;
+                }
+            } while (true);
+            break;
+            //옵션 2: 추천 경로 출력
+            //장소에 대한 설명만을 보고 장소를 순서대로 입력하면, 해당 순서에 맞는 최단 경로를 이어서 나타낸다.
+        case 2:
+            system("cls");
 
-			if (start_num <= building_num) {
-				x1 = building_list[start_num - 1].GetXpos();
-				y1 = building_list[start_num - 1].GetYpos();
-				std::cout << "출발 위치는 ";
-				building_list[start_num - 1].PrintName();
-			}
-			else if (start_num > building_num) {
-				x1 = structure_list[start_num - building_num - 1].GetXpos();
-				y1 = structure_list[start_num - building_num - 1].GetYpos();
-				std::cout << "출발 위치는 ";
-				structure_list[start_num - building_num - 1].PrintName();
-			}
-			if (end_num <= building_num) {
-				x2 = building_list[end_num - 1].GetXpos();
-				y2 = building_list[end_num - 1].GetYpos();
-				std::cout << "이고, 도착 위치는 ";
-				building_list[end_num - 1].PrintName();
-				std::cout << "입니다." << std::endl;
-			}
-			else if (end_num > building_num) {
-				x2 = structure_list[end_num - building_num - 1].GetXpos();
-				y2 = structure_list[end_num - building_num - 1].GetYpos();
-				std::cout << "이고, 도착 위치는 ";
-				structure_list[end_num - building_num - 1].PrintName();
-				std::cout << "입니다." << std::endl;
-			}
+            for (int i = 0; i < structure_num; i++) {
+                std::cout << i + 1 << ". ";
+                structure_list[i].PrintName();
+                std::cout << ": ";
+                structure_list[i].PrintInformation();
+                std::cout << std::endl;
+            }
+            std::cout << "가고 싶은 장소의 개수를 입력하세요." << std::endl;
+            std::cin >> sequence_count;
+            std::cout << "가고 싶은 장소의 숫자를 순서대로 입력하세요." << std::endl;
+            std::cout << "예시: 5번, 3번, 1번 장소 순서로 이동 -> 5 3 1 입력" << std::endl;
 
-			std::cout << "최단 경로를 출력합니다." << std::endl << std::endl;
-			map.FindShortestWay(x1, y1, x2, y2);
-			map.PrintShortestMap();
+            for (int i = 0; i < sequence_count; i++) {
+                std::cin >> temp;
+                sequence.append(temp);
+            }
 
-			break;
+            for (int i = 1; i < sequence.length(); i++) {
+                x1 = structure_list[sequence[i - 1] - '0'].GetXpos();
+                y1 = structure_list[sequence[i - 1] - '0'].GetYpos();
+                x2 = structure_list[sequence[i] - '0'].GetXpos();
+                y2 = structure_list[sequence[i] - '0'].GetYpos();
+                map.FindShortestWay(x1, y1, x2, y2);
+            }
 
-			//옵션 2: 추천 경로 출력
-			//장소에 대한 설명만을 보고 장소를 순서대로 입력하면, 해당 순서에 맞는 최단 경로를 이어서 나타낸다.
-		case 2:
-			system("cls");
+            system("cls");
+            structure_list[sequence[0] - '0'].PrintName();
+            std::cout << "에서 출발하여 ";
+            structure_list[sequence[sequence.length() - 1] - '0'].PrintName();
+            std::cout << "으로 이동합니다." << std::endl;
+            std::cout << "추천 경로를 출력합니다." << std::endl << std::endl;
 
-			for (int i = 0; i < structure_num; i++) {
-				std::cout << i + 1 << ". ";
-				structure_list[i].PrintName();
-				std::cout << ": ";
-				structure_list[i].PrintInformation();
-				std::cout << std::endl;
-			}
-			std::cout << "가고 싶은 장소의 번호를 순서대로 입력하세요." << std::endl;
-			std::cout << "예시: 5번, 3번, 1번 장소 순서로 이동 -> 531 입력" << std::endl;
+            map.PrintShortestMap();
+            break;
 
-			std::cin >> sequence;
+            //옵션 3: 캐릭터를 지도상에서 조작
+            //캐릭터가 특정 장소에 도착하면 관련 설명이 출력된다
+        case 3:
+            Character person;
 
-			for (int i = 1; i < sequence.length(); i++) {
-				x1 = structure_list[sequence[i - 1] - '0' - 1].GetXpos();
-				y1 = structure_list[sequence[i - 1] - '0' - 1].GetYpos();
-				x2 = structure_list[sequence[i] - '0' - 1].GetXpos();
-				y2 = structure_list[sequence[i] - '0' - 1].GetYpos();
-				map.FindShortestWay(x1, y1, x2, y2);
-			}
+            while (true) {
+                system("cls");
 
-			system("cls");
-			structure_list[sequence[0] - '0' - 1].PrintName();
-			std::cout << "에서 출발하여 ";
-			structure_list[sequence[sequence.length() - 1] - '0' - 1].PrintName();
-			std::cout << "으로 이동합니다." << std::endl;
-			std::cout << "추천 경로를 출력합니다." << std::endl << std::endl;
+                map.PrintInformation();
+                std::cout << "w: 위, s: 아래, a: 왼쪽, d: 오른쪽, 스페이스바: 종료";
 
-			map.PrintShortestMap();
-			break;
+                CursorPos(0, 33);
+                for (int i = 0; i < structure_num; i++) {
+                    if (structure_list[i].GetXpos() == person.GetXpos() && structure_list[i].GetYpos() == person.GetYpos()) {
+                        structure_list[i].PrintName();
+                        std::cout << ": ";
+                        structure_list[i].PrintInformation();
+                    }
+                }
+                for (int i = 0; i < building_num; i++) {
+                    if (building_list[i].GetXpos() == person.GetXpos() && building_list[i].GetYpos() == person.GetYpos()) {
+                        building_list[i].PrintName();
+                        std::cout << ": ";
+                        building_list[i].PrintInformation();
+                    }
+                }
 
-			//옵션 3: 캐릭터를 지도상에서 조작
-			//캐릭터가 특정 장소에 도착하면 관련 설명이 출력된다.
-		case 3:
-			Character person;
+                person.PrintInformation();
 
-			while (true) {
-				system("cls");
+                int direction = Selector();
+                if (direction == DIRECTION_ENTER) {
+                    CursorPos(0, 35);
+                    break;
+                }
 
-				map.PrintInformation();
-				std::cout << "w: 위, s: 아래, a: 왼쪽, d: 오른쪽, 스페이스바: 종료";
-
-				CursorPos(0, 33);
-				for (int i = 0; i < structure_num; i++) {
-					if (structure_list[i].GetXpos() == person.GetXpos() && structure_list[i].GetYpos() == person.GetYpos()) {
-						structure_list[i].PrintName();
-						std::cout << ": ";
-						structure_list[i].PrintInformation();
-					}
-				}
-				for (int i = 0; i < building_num; i++) {
-					if (building_list[i].GetXpos() == person.GetXpos() && building_list[i].GetYpos() == person.GetYpos()) {
-						building_list[i].PrintName();
-						std::cout << ": ";
-						building_list[i].PrintInformation();
-					}
-				}
-
-				person.PrintInformation();
-
-				int direction = Selector();
-				if (direction == DIRECTION_ENTER) {
-					CursorPos(0, 35);
-					break;
-				}
-
-				person.MovePlayer(direction, map);
-			}
-		}
-	}
-	else {
-		std::cout << "프로그램을 종료합니다." << std::endl;
-	}
-	return 0;
+                person.MovePlayer(direction, map);
+            }
+        }
+    }
+    else {
+    std::cout << "프로그램을 종료합니다." << std::endl;
+    }
+    return 0;
 }
