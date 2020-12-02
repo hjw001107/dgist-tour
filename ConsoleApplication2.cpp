@@ -143,6 +143,7 @@ int main() {
 		switch (choice) {
 			//옵션 1: 최단 경로 출력
 			//시작 위치와 도착 위치를 선택하면 두 지점을 잇는 경로를 나타낸다.
+
 		case 1:
 			system("cls");
 			for (int i = 0; i < building_num; i++) {
