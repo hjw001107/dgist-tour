@@ -45,13 +45,9 @@ public:
 		map_width = 52;
 		map_height = 30;
 
-		temp = shortest_map = map_data = ReadMap();
+		InitializeMap();
 
-		for (int i = 0; i < map_width; i++) {
-			for (int j = 0; j < map_height; j++) {
-				temp[j][i] = 9999;
-			}
-		}
+		shortest_map = map_data;
 
 		structure_num = 23;
 		building_num = 9;
