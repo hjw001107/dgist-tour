@@ -151,6 +151,7 @@
     <ClCompile Include="ConsoleApplication2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="building_list.txt" />
     <Text Include="structure_list.txt" />
   </ItemGroup>
   <ItemGroup>

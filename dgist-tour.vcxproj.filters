@@ -46,6 +46,9 @@
     <Text Include="structure_list.txt">
       <Filter>리소스 파일</Filter>
     </Text>
+    <Text Include="building_list.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore">
