@@ -233,7 +233,7 @@ int main() {
 				std::cout << i + 1 << ". ";
 				structure_list[i].PrintName();
 				std::cout << ": ";
-				structure_list[i].PrintExplanation();
+				structure_list[i].PrintInformation();
 				std::cout << std::endl;
 			}
 			std::cout << "가고 싶은 장소의 번호를 순서대로 입력하세요." << std::endl;
@@ -275,14 +275,14 @@ int main() {
 					if (structure_list[i].GetXpos() == person.GetXpos() && structure_list[i].GetYpos() == person.GetYpos()) {
 						structure_list[i].PrintName();
 						std::cout << ": ";
-						structure_list[i].PrintExplanation();
+						structure_list[i].PrintInformation();
 					}
 				}
 				for (int i = 0; i < building_num; i++) {
 					if (building_list[i].GetXpos() == person.GetXpos() && building_list[i].GetYpos() == person.GetYpos()) {
 						building_list[i].PrintName();
 						std::cout << ": ";
-						building_list[i].PrintExplanation();
+						building_list[i].PrintInformation();
 					}
 				}
 

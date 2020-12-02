@@ -50,7 +50,7 @@ public:
     }
 
     //캐릭터를 지도에 출력하는 함수이다.
-    void PrintInformation() final {
+    void PrintInformation() override final {
         CursorPos(x_pos * 2, y_pos);
         ChangeColor(COLOR_YELLOW, COLOR_DARKGRAY);
         std::cout << "●";
