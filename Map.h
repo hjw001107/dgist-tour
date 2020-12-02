@@ -53,6 +53,7 @@ public:
         for (int i = 0; i < map_width; i++) {
             for (int j = 0; j < map_height; j++) {
                 temp[j][i] = 9999;
+                temp[j][i] = 9999;
             }
         }
 

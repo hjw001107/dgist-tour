@@ -9,6 +9,7 @@ enum Block {
     BLOCK_WAY = 4,
 };
 
+
 //콘솔창에 출력되는 글자, 배경의 색상이다.
 enum Color {
     COLOR_BLACK = 0,
