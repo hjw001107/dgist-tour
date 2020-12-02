@@ -50,6 +50,12 @@ std::vector<T> ReadFromFIle(const char* path) {
 	return rtn;
 }
 
+std::string ReadIntroDrawing() {
+	std::ifstream ifs{ "intro.txt", std::ifstream::binary };
+	return std::string((std::istreambuf_iterator<char>(ifs)),
+		std::istreambuf_iterator<char>());
+}
+
 std::vector<Structure> structure_list = ReadFromFIle<Structure>("structure_list.txt");
 
 std::vector<Building> building_list = ReadFromFIle<Building>("building_list.txt");
@@ -72,25 +78,7 @@ int StartProgram() {
 		CursorPos(x - 2, y);
 		std::cout << ">" << std::endl;
 		CursorPos(0, 0);
-		const char* drawing = "\
-\n               \
-\n                                                           <DGIST 캠퍼스 사이버 투어 프로그램>\
-\n               \
-\n                                                              지금 바로 DGIST를 투어해보세요!\
-\n               \
-\n               \
-\n                                                         (w, s: 메뉴 이동, 스페이스바: 메뉴 선택)\
-\n                                                                           _____\
-\n                                                                           |   |\
-\n                                                                           DGIST\
-\n                                          _____         ____     __________| o |___________      _________\
-\n                                         |o o o|_______|    |___|               | | # # #  |____|o o o o  | \
-\n                                         |o o o|  * * *|: ::|. .|               |o| # # #  |. . |o o o o  |\
-\n                                         |o o o|* * *  |::  |. .| []  []  []  []|o| # # #  |. . |o o o o  |\
-\n                                         |o o o|**  ** |:  :|. .| []  []  []    |o| # # #  |. . |o o o o  |\
-\n                                         |_[]__|__[]___|_||_|___|____________□_|_|___□___|_.|_|____[]___|\
-\n";
-		std::cout << drawing << std::endl;
+		std::cout << ReadIntroDrawing() << std::endl;
 
 		int start = 20;
 		CursorPos(x, start);

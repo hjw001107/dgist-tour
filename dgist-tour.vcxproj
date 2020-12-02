@@ -152,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="building_list.txt" />
+    <Text Include="intro.txt" />
+    <Text Include="map.txt" />
     <Text Include="structure_list.txt" />
   </ItemGroup>
   <ItemGroup>
