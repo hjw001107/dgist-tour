@@ -9,10 +9,7 @@
 class Character : public Canvas {
 public:
     //처음 위치를 정하지 않는 경우 학부생 기숙사에서 출발
-    Character() {
-        x_pos = 45;
-        y_pos = 12;
-    }
+    Character() : Character(45, 12) {}
     //처음 위치를 정할 경우 해당 위치에서 출발
     Character(int x, int y) {
         x_pos = x;
