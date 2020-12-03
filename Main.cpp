@@ -216,7 +216,7 @@ int main() {
 
                     std::cout << "최단 경로를 출력합니다." << std::endl << std::endl;
                     map.FindShortestWay(x1, y1, x2, y2);
-                    map.PrintShortestMap();
+                    map.PrintMap(map.GetShortestMap());
                     break;
                 }
                 catch (int expn) {
@@ -271,7 +271,7 @@ int main() {
             std::cout << "으로 이동합니다." << std::endl;
             std::cout << "추천 경로를 출력합니다." << std::endl << std::endl;
 
-            map.PrintShortestMap();
+            map.PrintMap(map.GetShortestMap());
             break;
 
             //옵션 3: 캐릭터를 지도상에서 조작
@@ -282,7 +282,7 @@ int main() {
             while (true) {
                 system("cls");
 
-                map.PrintMap();
+                map.PrintMap(map.GetMap());
                 std::cout << "w: 위로 1칸 이동, s: 아래로 1칸 이동, a: 왼쪽으로 1칸 이동, d: 오른쪽으로 1칸 이동, q: 디지스트 사이버 투어 홈페이지 연결" << std::endl;
                 std::cout << "8: 위로 5칸 이동, 2: 아래로 5칸 이동, 4: 왼쪽으로 5칸 이동, 6: 오른쪽으로 5칸 이동, 스페이스바: 종료";
                 CursorPos(0, 33);
