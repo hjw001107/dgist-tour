@@ -7,7 +7,7 @@
 
 #include "Enums.h"
 #include "Console.h"
-#include "Canvas.h"
+#include "Location.h"
 #include "Map.h"
 #include "Character.h"
 
@@ -282,7 +282,7 @@ int main() {
             while (true) {
                 system("cls");
 
-                map.PrintInformation();
+                map.PrintMap();
                 std::cout << "w: 위로 1칸 이동, s: 아래로 1칸 이동, a: 왼쪽으로 1칸 이동, d: 오른쪽으로 1칸 이동, q: 디지스트 사이버 투어 홈페이지 연결" << std::endl;
                 std::cout << "8: 위로 5칸 이동, 2: 아래로 5칸 이동, 4: 왼쪽으로 5칸 이동, 6: 오른쪽으로 5칸 이동, 스페이스바: 종료";
                 CursorPos(0, 33);

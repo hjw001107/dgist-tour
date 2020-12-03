@@ -6,18 +6,18 @@
 //Place, Map, Character의 부모 클래스이다.
 //x_pos, y_pos로 각 클래스에서 필요한 x, y좌표를 사용한다.
 //PrintInformation을 통해 각 클래스에서 출력이 필요한 정보를 출력한다.
-class Canvas {
+class Location {
 protected:
     //x,y 좌표이다.
     int x_pos;
     int y_pos;
 public:
-    Canvas() {}
-    Canvas(int x, int y)
+    Location() {}
+    Location(int x, int y)
         : x_pos(x), y_pos(y)
     {}
 
-    virtual ~Canvas() {}
+    virtual ~Location() {}
 
     //x좌표를 반환하는 함수이다.
     virtual int GetXpos() {
@@ -36,15 +36,15 @@ public:
 //인터페이스를 제공하는 클래스이다.
 //각 장소의 x, y좌표를 반환하며, 이름과 설명을 출력한다.
 //Sturcture, Building 클래스의 부모 클래스이다.
-class Place : public Canvas {
+class Place : public Location {
 protected:
     std::string p_name;
     std::string p_explanation;
 public:
     //place의 이름을 출력하는 함수이다.
     Place() {}
-    Place(int x, int y, std::string name, std::string explanation) 
-       : Canvas(x, y), p_name(name), p_explanation(explanation)
+    Place(int x, int y, std::string name, std::string explanation)
+        : Location(x, y), p_name(name), p_explanation(explanation)
     {}
     virtual void PrintName() {
         std::cout << p_name;

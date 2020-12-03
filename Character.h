@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Canvas.h"
+#include "Location.h"
 #include "Enums.h"
 #include "Map.h"
 
 //지도를 직접 돌아다닐 수 있는 캐릭터에 관한 클래스이다.
 //x, y좌표를 멤버 변수로 가지며, 이동과 출력을 담당하는 멤버 함수를 가진다.
-class Character : public Canvas {
+class Character : public Location {
 public:
     //처음 위치를 정하지 않는 경우 학부생 기숙사에서 출발
     Character() : Character(45, 12) {}

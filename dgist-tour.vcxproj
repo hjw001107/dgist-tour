@@ -139,10 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Canvas.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="Map.h" />
   </ItemGroup>
   <ItemGroup>

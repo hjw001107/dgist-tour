@@ -7,7 +7,7 @@
 #include <iostream>
 
 //지도의 정보를 저장하고 최단 경로 찾기를 지원하는 클래스이다.
-class Map : public Canvas {
+class Map {
 private:
 	static std::vector<std::vector<int>> ReadMap() {
 		std::ifstream ifs{ "map.txt" };
@@ -170,7 +170,7 @@ public:
 	}
 
 	//map_data를 출력하는 함수이다.
-	void PrintInformation() final {
+	void PrintMap() {
 		for (int i = 0; i < map_height; i++) {
 			for (int j = 0; j < map_width; j++) {
 				if (map_data[i][j] == BLOCK_ROAD || map_data[i][j] == 10) {
