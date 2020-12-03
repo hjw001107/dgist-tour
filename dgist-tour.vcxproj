@@ -150,10 +150,10 @@
     <ClCompile Include="ConsoleApplication2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="building_list.txt" />
+    <Text Include="structure_list.txt" />
     <Text Include="intro.txt" />
     <Text Include="map.txt" />
-    <Text Include="structure_list.txt" />
+    <Text Include="attraction_list.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

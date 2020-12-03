@@ -40,16 +40,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="structure_list.txt">
-      <Filter>리소스 파일</Filter>
-    </Text>
-    <Text Include="building_list.txt">
-      <Filter>리소스 파일</Filter>
-    </Text>
     <Text Include="intro.txt">
       <Filter>리소스 파일</Filter>
     </Text>
     <Text Include="map.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="attraction_list.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="structure_list.txt">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>

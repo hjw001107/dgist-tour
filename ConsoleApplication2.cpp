@@ -56,9 +56,9 @@ std::string ReadIntroDrawing() {
 		std::istreambuf_iterator<char>());
 }
 
-std::vector<Structure> structure_list = ReadFromFIle<Structure>("structure_list.txt");
+std::vector<Attraction> attraction_list = ReadFromFIle<Attraction>("attraction_list.txt");
 
-std::vector<Building> building_list = ReadFromFIle<Building>("building_list.txt");
+std::vector<Structure> structure_list = ReadFromFIle<Structure>("structure_list.txt");
 
 //프로그램을 시작할 때 필요한 함수이다.
 //기본 창의 크기를 조정하고, 시작 화면에 아스키 아트를 출력해준다.
@@ -134,8 +134,8 @@ int main() {
         int x1, y1, x2, y2;
 
 
-        int building_num = building_list.size();
         int structure_num = structure_list.size();
+        int attraction_num = attraction_list.size();
 
         std::cout << "스페이스바를 누르시면 투어가 시작됩니다." << std::endl;
 
@@ -151,15 +151,15 @@ int main() {
                 try {
                     system("cls");
 
-                    for (int i = 0; i < building_num; i++) {
+                    for (int i = 0; i < structure_num; i++) {
                         std::cout << i + 1 << ". ";
-                        building_list[i].PrintName();
+                        structure_list[i].PrintName();
                         std::cout << std::endl;
                     }
 
-                    for (int i = 0; i < structure_num; i++) {
+                    for (int i = 0; i < attraction_num; i++) {
                         std::cout << i + 24 << ". ";
-                        structure_list[i].PrintName();
+                        attraction_list[i].PrintName();
                         std::cout << std::endl;
                     }
 
@@ -187,30 +187,30 @@ int main() {
                     }
                     
                     system("cls");
-                    if (start_num <= building_num) {
-                        x1 = building_list[start_num - 1].GetXpos();
-                        y1 = building_list[start_num - 1].GetYpos();
+                    if (start_num <= structure_num) {
+                        x1 = structure_list[start_num - 1].GetXpos();
+                        y1 = structure_list[start_num - 1].GetYpos();
                         std::cout << "출발 위치는 ";
-                        building_list[start_num - 1].PrintName();
+                        structure_list[start_num - 1].PrintName();
                     }
-                    else if (start_num > building_num) {
-                        x1 = structure_list[start_num - building_num - 1].GetXpos();
-                        y1 = structure_list[start_num - building_num - 1].GetYpos();
+                    else if (start_num > structure_num) {
+                        x1 = attraction_list[start_num - structure_num - 1].GetXpos();
+                        y1 = attraction_list[start_num - structure_num - 1].GetYpos();
                         std::cout << "출발 위치는 ";
-                        structure_list[start_num - building_num - 1].PrintName();
+                        attraction_list[start_num - structure_num - 1].PrintName();
                     }
-                    if (end_num <= building_num) {
-                        x2 = building_list[end_num - 1].GetXpos();
-                        y2 = building_list[end_num - 1].GetYpos();
+                    if (end_num <= structure_num) {
+                        x2 = structure_list[end_num - 1].GetXpos();
+                        y2 = structure_list[end_num - 1].GetYpos();
                         std::cout << "이고, 도착 위치는 ";
-                        building_list[end_num - 1].PrintName();
+                        structure_list[end_num - 1].PrintName();
                         std::cout << "입니다." << std::endl;
                     }
-                    else if (end_num > building_num) {
-                        x2 = structure_list[end_num - building_num - 1].GetXpos();
-                        y2 = structure_list[end_num - building_num - 1].GetYpos();
+                    else if (end_num > structure_num) {
+                        x2 = attraction_list[end_num - structure_num - 1].GetXpos();
+                        y2 = attraction_list[end_num - structure_num - 1].GetYpos();
                         std::cout << "이고, 도착 위치는 ";
-                        structure_list[end_num - building_num - 1].PrintName();
+                        attraction_list[end_num - structure_num - 1].PrintName();
                         std::cout << "입니다." << std::endl;
                     }
 
@@ -239,11 +239,11 @@ int main() {
         case 2:
             system("cls");
 
-            for (int i = 0; i < structure_num; i++) {
+            for (int i = 0; i < attraction_num; i++) {
                 std::cout << i + 1 << ". ";
-                structure_list[i].PrintName();
+                attraction_list[i].PrintName();
                 std::cout << ": ";
-                structure_list[i].PrintInformation();
+                attraction_list[i].PrintInformation();
                 std::cout << std::endl;
             }
             std::cout << "가고 싶은 장소의 개수를 입력하세요." << std::endl;
@@ -257,17 +257,17 @@ int main() {
             }
 
             for (int i = 1; i < sequence.length(); i++) {
-                x1 = structure_list[sequence[i - 1] - '0' -1].GetXpos();
-                y1 = structure_list[sequence[i - 1] - '0' -1].GetYpos();
-                x2 = structure_list[sequence[i] - '0' -1].GetXpos();
-                y2 = structure_list[sequence[i] - '0' -1].GetYpos();
+                x1 = attraction_list[sequence[i - 1] - '0' -1].GetXpos();
+                y1 = attraction_list[sequence[i - 1] - '0' -1].GetYpos();
+                x2 = attraction_list[sequence[i] - '0' -1].GetXpos();
+                y2 = attraction_list[sequence[i] - '0' -1].GetYpos();
                 map.FindShortestWay(x1, y1, x2, y2);
             }
 
             system("cls");
-            structure_list[sequence[0] - '0' -1].PrintName();
+            attraction_list[sequence[0] - '0' -1].PrintName();
             std::cout << "에서 출발하여 ";
-            structure_list[sequence[sequence.length() - 1] - '0' -1].PrintName();
+            attraction_list[sequence[sequence.length() - 1] - '0' -1].PrintName();
             std::cout << "으로 이동합니다." << std::endl;
             std::cout << "추천 경로를 출력합니다." << std::endl << std::endl;
 
@@ -286,18 +286,18 @@ int main() {
                 std::cout << "w: 위로 1칸 이동, s: 아래로 1칸 이동, a: 왼쪽으로 1칸 이동, d: 오른쪽으로 1칸 이동, q: 디지스트 사이버 투어 홈페이지 연결" << std::endl;
                 std::cout << "8: 위로 5칸 이동, 2: 아래로 5칸 이동, 4: 왼쪽으로 5칸 이동, 6: 오른쪽으로 5칸 이동, 스페이스바: 종료";
                 CursorPos(0, 33);
+                for (int i = 0; i < attraction_num; i++) {
+                    if (attraction_list[i].GetXpos() == person.GetXpos() && attraction_list[i].GetYpos() == person.GetYpos()) {
+                        attraction_list[i].PrintName();
+                        std::cout << ": ";
+                        attraction_list[i].PrintInformation();
+                    }
+                }
                 for (int i = 0; i < structure_num; i++) {
                     if (structure_list[i].GetXpos() == person.GetXpos() && structure_list[i].GetYpos() == person.GetYpos()) {
                         structure_list[i].PrintName();
                         std::cout << ": ";
                         structure_list[i].PrintInformation();
-                    }
-                }
-                for (int i = 0; i < building_num; i++) {
-                    if (building_list[i].GetXpos() == person.GetXpos() && building_list[i].GetYpos() == person.GetYpos()) {
-                        building_list[i].PrintName();
-                        std::cout << ": ";
-                        building_list[i].PrintInformation();
                     }
                 }
 

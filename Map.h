@@ -32,8 +32,8 @@ private:
 private:
 	int map_width;     //맵의 너비
 	int map_height;    //맵의 높이
-	int structure_num;  //조형물의 개수를 저장
-	int building_num;   //건물의 개수를 저장
+	int attraction_num;  //조형물의 개수를 저장
+	int structure_num;   //건물의 개수를 저장
 
 	int pos, cnt, n;  //최단 경로를 찾기 위해 필요한 정수
 	int x[40000], y[40000];                //최단 경로를 찾기 위해 필요한 배열
@@ -49,8 +49,8 @@ public:
 
 		shortest_map = map_data;
 
-		structure_num = 23;
-		building_num = 9;
+		attraction_num = 23;
+		structure_num = 9;
 	}
 
 	//지도의 실제 너비를 반환하는 함수이다.

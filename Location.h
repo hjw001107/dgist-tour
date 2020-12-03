@@ -35,7 +35,7 @@ public:
 
 //인터페이스를 제공하는 클래스이다.
 //각 장소의 x, y좌표를 반환하며, 이름과 설명을 출력한다.
-//Sturcture, Building 클래스의 부모 클래스이다.
+//Sturcture, Structure 클래스의 부모 클래스이다.
 class Place : public Location {
 protected:
     std::string p_name;
@@ -58,16 +58,16 @@ public:
 
 //지도상에서 조형물에 해당하는 장소에 관한 클래스이다.
 //x, y좌표, 이름, 설명으로 객체를 생성하면 관련 변수를 초기화한다.
-class Structure :public Place {
+class Attraction :public Place {
 public:
-    Structure(int x, int y, std::string name, std::string explanation)
+    Attraction(int x, int y, std::string name, std::string explanation)
         : Place(x, y, name, explanation) {}
 };
 
 //지도상에서 조형물에 해당하는 장소에 관한 클래스이다.
 //x, y좌표, 이름, 설명으로 객체를 생성하면 관련 변수를 초기화한다.
-class Building :public Place {
+class Structure :public Place {
 public:
-    Building(int x, int y, std::string name, std::string explanation)
+    Structure(int x, int y, std::string name, std::string explanation)
         : Place(x, y, name, explanation) {}
 };
