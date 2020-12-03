@@ -270,7 +270,7 @@ void MainCase2(Map& map, const int& attraction_num) {
             system("cls");
             std::cout << expn << ": 문자를 입력하셨습니다." << std::endl;
         }
-        std::cout << "1에서 32까지의 숫자를 중복하지 않고 입력해주세요." << std::endl;
+        std::cout << "2에서 9까지의 숫자를 중복하지 않고 입력해주세요." << std::endl;
         std::cout << "스페이스바를 누르시면 목록으로 다시 돌아갑니다." << std::endl;
         while (true) {
             if (Selector() == DIRECTION_ENTER) break;
