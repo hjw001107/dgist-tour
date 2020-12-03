@@ -38,6 +38,11 @@ int Selector() {
 	case 'a': return DIRECTION_LEFT;
 	case 's': return DIRECTION_DOWN;
 	case 'd': return DIRECTION_RIGHT;
+	case '8': return DIRECTION_FASTUP;
+	case '4': return DIRECTION_FASTLEFT;
+	case '2': return DIRECTION_FASTDOWN;
+	case '6': return DIRECTION_FASTRIGHT;
+	case 'q': return DIRECTION_STAY;
 	default:
 		if (isspace(input))
 			return DIRECTION_ENTER;

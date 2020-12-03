@@ -41,7 +41,35 @@ public:
             break;
         case DIRECTION_LEFT:
             if (x_pos > 0 && map.GetMapBlock(x_pos - 1, y_pos) != 1) {
-                x_pos--;
+                x_pos --;
+            }
+        case DIRECTION_FASTUP:
+            for (int i = 0; i < 5; i++) {
+                if (y_pos > 0 && map.GetMapBlock(x_pos, y_pos - 1) != 1) {
+                    y_pos--;
+                }
+                break;
+            }
+        case DIRECTION_FASTDOWN:
+            for (int i = 0; i < 5; i++) {
+                if (y_pos < height - 1 && map.GetMapBlock(x_pos, y_pos + 1) != 1) {
+                    y_pos++;
+                }
+                break;
+            }
+        case DIRECTION_FASTRIGHT:
+            for (int i = 0; i < 5; i++) {
+                if (x_pos < width - 1 && map.GetMapBlock(x_pos + 1, y_pos) != 1) {
+                    x_pos++;
+                }
+                break;
+            }
+        case DIRECTION_FASTLEFT:
+            for (int i = 0; i < 5; i++) {
+                if (x_pos > 0 && map.GetMapBlock(x_pos - 1, y_pos) != 1) {
+                    x_pos--;
+                }
+                break;
             }
         }
     }
