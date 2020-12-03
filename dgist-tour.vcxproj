@@ -146,7 +146,6 @@
     <ClInclude Include="Map.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="ConsoleApplication2.cpp" />
   </ItemGroup>

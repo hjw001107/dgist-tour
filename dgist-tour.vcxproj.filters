@@ -38,9 +38,6 @@
     <ClCompile Include="ConsoleApplication2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Canvas.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="structure_list.txt">
