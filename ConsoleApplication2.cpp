@@ -257,17 +257,17 @@ int main() {
             }
 
             for (int i = 1; i < sequence.length(); i++) {
-                x1 = structure_list[sequence[i - 1] - '0'].GetXpos();
-                y1 = structure_list[sequence[i - 1] - '0'].GetYpos();
-                x2 = structure_list[sequence[i] - '0'].GetXpos();
-                y2 = structure_list[sequence[i] - '0'].GetYpos();
+                x1 = structure_list[sequence[i - 1] - '0' - 1].GetXpos();
+                y1 = structure_list[sequence[i - 1] - '0' - 1].GetYpos();
+                x2 = structure_list[sequence[i] - '0' - 1].GetXpos();
+                y2 = structure_list[sequence[i] - '0' - 1].GetYpos();
                 map.FindShortestWay(x1, y1, x2, y2);
             }
 
             system("cls");
-            structure_list[sequence[0] - '0'].PrintName();
+            structure_list[sequence[0] - '0' - 1].PrintName();
             std::cout << "에서 출발하여 ";
-            structure_list[sequence[sequence.length() - 1] - '0'].PrintName();
+            structure_list[sequence[sequence.length() - 1] - '0' - 1].PrintName();
             std::cout << "으로 이동합니다." << std::endl;
             std::cout << "추천 경로를 출력합니다." << std::endl << std::endl;
 
@@ -282,7 +282,7 @@ int main() {
             while (true) {
                 system("cls");
 
-                map.PrintInformation();
+                map.PrintMap();
                 std::cout << "w: 위로 1칸 이동, s: 아래로 1칸 이동, a: 왼쪽으로 1칸 이동, d: 오른쪽으로 1칸 이동, q: 디지스트 사이버 투어 홈페이지 연결" << std::endl;
                 std::cout << "8: 위로 5칸 이동, 2: 아래로 5칸 이동, 4: 왼쪽으로 5칸 이동, 6: 오른쪽으로 5칸 이동, 스페이스바: 종료";
                 CursorPos(0, 33);
