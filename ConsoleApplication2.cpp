@@ -283,8 +283,8 @@ int main() {
                 system("cls");
 
                 map.PrintInformation();
-                std::cout << "w: 위로 1칸 이동, s: 아래로 1칸 이동, a: 왼쪽로 1칸 이동, d: 오른쪽로 1칸 이동, q: 디지스트 사이버 투어 홈페이지 연결" << std::endl;
-                std::cout << "8: 위로 5칸 이동, 2: 아래로 5칸 이동, 4: 왼쪽로 5칸 이동, 6: 오른쪽로 5칸 이동, 스페이스바: 종료";
+                std::cout << "w: 위로 1칸 이동, s: 아래로 1칸 이동, a: 왼쪽으로 1칸 이동, d: 오른쪽으로 1칸 이동, q: 디지스트 사이버 투어 홈페이지 연결" << std::endl;
+                std::cout << "8: 위로 5칸 이동, 2: 아래로 5칸 이동, 4: 왼쪽으로 5칸 이동, 6: 오른쪽으로 5칸 이동, 스페이스바: 종료";
                 CursorPos(0, 33);
                 for (int i = 0; i < structure_num; i++) {
                     if (structure_list[i].GetXpos() == person.GetXpos() && structure_list[i].GetYpos() == person.GetYpos()) {
