@@ -12,6 +12,12 @@ protected:
     int x_pos;
     int y_pos;
 public:
+    Canvas() {}
+    Canvas(int x, int y)
+        : x_pos(x), y_pos(y)
+    {}
+
+    virtual ~Canvas() {}
 
     //x좌표를 반환하는 함수이다.
     virtual int GetXpos() {
@@ -23,7 +29,7 @@ public:
         return y_pos;
     }
 
-    //각 클래스에서 출력이 필요한 정보를 출력한다
+    //각 클래스에서 출력이 필요한 정보를 출력한다.
     virtual void PrintInformation() = 0;
 };
 
@@ -36,6 +42,10 @@ protected:
     std::string p_explanation;
 public:
     //place의 이름을 출력하는 함수이다.
+    Place() {}
+    Place(int x, int y, std::string name, std::string explanation) 
+       : Canvas(x, y), p_name(name), p_explanation(explanation)
+    {}
     virtual void PrintName() {
         std::cout << p_name;
     }
@@ -50,25 +60,14 @@ public:
 //x, y좌표, 이름, 설명으로 객체를 생성하면 관련 변수를 초기화한다.
 class Structure :public Place {
 public:
-    Structure(int x, int y, std::string name, std::string explanation) {
-        x_pos = x;
-        y_pos = y;
-        p_name = name;
-        p_explanation = explanation;
-    }
-    ~Structure() {}
+    Structure(int x, int y, std::string name, std::string explanation)
+        : Place(x, y, name, explanation) {}
 };
-
 
 //지도상에서 조형물에 해당하는 장소에 관한 클래스이다.
 //x, y좌표, 이름, 설명으로 객체를 생성하면 관련 변수를 초기화한다.
 class Building :public Place {
 public:
-    Building(int x, int y, std::string name, std::string explanation) {
-        x_pos = x;
-        y_pos = y;
-        p_name = name;
-        p_explanation = explanation;
-    }
-    ~Building() {}
+    Building(int x, int y, std::string name, std::string explanation)
+        : Place(x, y, name, explanation) {}
 };
