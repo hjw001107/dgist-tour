@@ -11,7 +11,7 @@ public:
     //처음 위치를 정하지 않는 경우 학부생 기숙사에서 출발
     Character() : Character(45, 12) {}
     //처음 위치를 정할 경우 해당 위치에서 출발
-    Character(int x, int y) {
+    Character(const int& x, const int& y) {
         x_pos = x;
         y_pos = y;
     }
@@ -20,12 +20,11 @@ public:
     //캐릭터를 지도상에서 움직이는 함수이다.
     //지도의 방향, 지도 객체를 매개변수로 이용한다.
     //지도를 넘어가지 않으면서 길, 건물, 조형물만 이동할 수 있도록 제한되어있다.
-    void MovePlayer(int direction, Map map) {
+    void MovePlayer(const int& direction, const Map& map) {
         int height = map.GetMapHeight();
         int width = map.GetMapWidth();
         switch (direction) {
-
-            //캐릭터가 상,하,좌,우로 한 칸씩 움직인다. 목적지가 캐릭터가 이동할 수 없는 장소일 경우 움직이지 않는다.
+            //캐릭터가 상,하,좌,우로 한 칸씩 움직인다. 목적지가 캐릭터가 이동할 수 없는 Block일 경우 움직이지 않는다.
         case DIRECTION_UP:
             if (y_pos > 0 && map.GetMapBlock(x_pos, y_pos - 1) != 1) {
                 y_pos--;

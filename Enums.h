@@ -1,14 +1,14 @@
 #pragma once
 
 //지도 배열에 저장된 숫자의 의미이다.
+//길, 벽, 조형물, 명소, 최단 경로로 구분된다.
 enum Block {
     BLOCK_ROAD = 0,
     BLOCK_WALL = 1,
-    BLOCK_STRUCTURE = 2,
-    BLOCK_BUILDING = 3,
+    BLOCK_ATTRACTION = 2,
+    BLOCK_STRUCTURE = 3,
     BLOCK_WAY = 4,
 };
-
 
 //콘솔창에 출력되는 글자, 배경의 색상이다.
 enum Color {
@@ -30,7 +30,7 @@ enum Color {
     COLOR_WHITE = 15,
 };
 
-//w, a, s, d 키로 입력한 방향이다.
+//w, a, s, d, 2, 4, 6, 8 키. 스페이스바, 엔터로 입력한 방향이다.
 enum Direction {
     DIRECTION_UP = 1,
     DIRECTION_DOWN = 2,
