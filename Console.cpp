@@ -14,6 +14,7 @@ void CursorPos(int x, int y) {
 	SetConsoleCursorPosition(consoleHandle, pos);
 }
 
+//깜빡이는 커서를 제거해 준다.
 void RemoveCursor() {
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO ConsoleCursor;

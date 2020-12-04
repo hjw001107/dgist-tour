@@ -41,11 +41,13 @@ protected:
     std::string p_name;
     std::string p_explanation;
 public:
-    //place의 이름을 출력하는 함수이다.
+
     Place() {}
     Place(int x, int y, std::string name, std::string explanation)
         : Location(x, y), p_name(name), p_explanation(explanation)
     {}
+
+    //place의 이름을 출력하는 함수이다.
     virtual void PrintName() {
         std::cout << p_name;
     }

@@ -24,6 +24,8 @@ public:
         int height = map.GetMapHeight();
         int width = map.GetMapWidth();
         switch (direction) {
+
+            //캐릭터가 상,하,좌,우로 한 칸씩 움직인다. 목적지가 캐릭터가 이동할 수 없는 장소일 경우 움직이지 않는다.
         case DIRECTION_UP:
             if (y_pos > 0 && map.GetMapBlock(x_pos, y_pos - 1) != 1) {
                 y_pos--;
@@ -44,6 +46,9 @@ public:
                 x_pos --;
             }
             break;
+
+            //위의 명령어를 for문을 통해 다섯 번 반복한다. 다섯 칸씩 움직일 수 있다.
+            //목적지가 캐릭터가 이동할 수 없는 장소일 경우 그 전까지만 이동한다.
         case DIRECTION_FASTUP:
             for (int i = 0; i < 5; i++) {
                 if (y_pos > 0 && map.GetMapBlock(x_pos, y_pos - 1) != 1) {
