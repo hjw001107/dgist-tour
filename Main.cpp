@@ -86,7 +86,7 @@ int StartProgram() {
         CursorPos(x, start + 2);
         std::cout << "옵션 3: 사이버로 캠퍼스를 구경하고 싶다면? 캐릭터를 움직여보세요!" << std::endl;
         CursorPos(x, start + 3);
-        std::cout << "옵션 4: 다음에 학교에서 만나요!" << std::endl;
+        std::cout << "옵션 4: 다음에 학교에서 만나요! (프로그램 종료)" << std::endl;
 
         //w, s, 엔터(혹은 스페이스)를 구분하여 입력받는다.
         int input = Selector();

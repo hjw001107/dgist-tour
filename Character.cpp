@@ -59,6 +59,8 @@
                 }
             }
             break;
+        default :
+            break;
         }
     }
 
