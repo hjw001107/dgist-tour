@@ -243,19 +243,19 @@ void PrepareMainCase2(const int& attraction_num) {
 //main 함수 내부에서 case2가 불리게 되면 예외 처리 후에 호출되어 기능을 수행하기 시작하는 함수이다. 
 //sequence에서 두 개의 값씩 차례대로 뽑아서 x, y좌표를 얻어내고, 최단경로를 찾는다.
 //모든 최단경로가 중첩되어 그려진 map을 출력한다.
-void SuccessMainCase2(Map& map, const int& sequence_count, std::vector <int> sequence) {
+void SuccessMainCase2(Map& map, const int& sequence_count, const std::vector <int>& sequence) {
     int x1, y1, x2, y2;
     for (int i = 1; i < sequence_count; i++) {
-        x1 = attraction_list[sequence[i - 1]].GetXpos();
-        y1 = attraction_list[sequence[i - 1]].GetYpos();
-        x2 = attraction_list[sequence[i]].GetXpos();
-        y2 = attraction_list[sequence[i]].GetYpos();
+        x1 = attraction_list[sequence[i - 1]-1].GetXpos();
+        y1 = attraction_list[sequence[i - 1]-1].GetYpos();
+        x2 = attraction_list[sequence[i]-1].GetXpos();
+        y2 = attraction_list[sequence[i]-1].GetYpos();
         map.FindShortestWay(x1, y1, x2, y2);
     }
     system("cls");
-    attraction_list[*(sequence.begin())].PrintName();
+    attraction_list[*(sequence.begin())-1].PrintName();
     std::cout << "에서 출발하여 ";
-    attraction_list[*(sequence.end() - 1)].PrintName();
+    attraction_list[*(sequence.end() - 1)-1].PrintName();
     std::cout << "으로 이동합니다." << std::endl;
     std::cout << "추천 경로를 출력합니다." << std::endl << std::endl;
     map.PrintMap(map.GetShortestMap());
