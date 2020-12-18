@@ -30,7 +30,8 @@ enum Color {
     COLOR_WHITE = 15,
 };
 
-//w, a, s, d, 2, 4, 6, 8 키. 스페이스바, 엔터로 입력한 방향이다.
+//w, a, s, d, 2, 4, 6, 8 키. 스페이스바, 엔터로 입력한 방향이다.  
+
 enum Direction {
     DIRECTION_UP = 1,
     DIRECTION_DOWN = 2,
@@ -41,6 +42,7 @@ enum Direction {
     DIRECTION_FASTLEFT = 7,
     DIRECTION_FASTRIGHT = 8,
     DIRECTION_STAY = 9,
+
     DIRECTION_ENTER = 0,
     DIRECTION_UNKNOWN = 255,
 };
