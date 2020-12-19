@@ -125,19 +125,6 @@ int StartProgram() {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //main 함수 내부에서 case1을 실행할 때 발생할 수 있는 예외를 처리해주는 함수이다.
 //입력한 값이 숫자가 아니거나, 범위에 맞는 값이 아닐 경우 throw 한다.
 void ThrowMainCase1(int& start_num, int& end_num) {
@@ -228,7 +215,7 @@ void MainCase1(Map& map, const int& structure_num, const int& attraction_num) {
         //integer 변환 실패시, 문자를 입력하였다고 출력된다. 
         catch (std::string expn) {
             system("cls");
-            std::cout << expn << ": 문자를 입력하셨습니다." << std::endl;
+            std::cout << expn << ": 문자를 입력하셨거나, 2개의 숫자를 입력하지 않으셨습니다." << std::endl;
         }
         //숫자 입력에 대한 예외 발생 시 엔터(스페이스바)를 누르면 다시 숫자 입력으로 돌아간다.
         //올바른 숫자 입력 시까지 반복된다.
