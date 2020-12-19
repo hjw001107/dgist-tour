@@ -13,11 +13,10 @@ protected:
     int x_pos;
     int y_pos;
 public:
-    Location() {}
-    Location(int x, int y)
-        : x_pos(x), y_pos(y)
+    Location() noexcept {}
+    Location(int x, int y) noexcept
+        : x_pos(x), y_pos(y) 
     {}
-
     virtual ~Location() {}
 
     //x좌표를 반환하는 함수이다.
@@ -41,8 +40,8 @@ protected:
     std::string p_name;
     std::string p_explanation;
 public:
-    Place() {}
-    Place(int x, int y, std::string name, std::string explanation)
+    Place() noexcept {}
+    Place(int x, int y, std::string name, std::string explanation) noexcept
         : Location(x, y), p_name(name), p_explanation(explanation)
     {}
 
@@ -59,7 +58,7 @@ public:
 
 //지도상에서 조형물에 해당하는 장소에 관한 클래스이다.
 //x, y좌표, 이름, 설명으로 객체를 생성하면 관련 변수를 초기화한다.
-class Attraction :public Place {
+class Attraction final :public Place {
 public:
     Attraction(int x, int y, std::string name, std::string explanation)
         : Place(x, y, name, explanation) {}
@@ -67,7 +66,7 @@ public:
 
 //지도상에서 조형물에 해당하는 장소에 관한 클래스이다.
 //x, y좌표, 이름, 설명으로 객체를 생성하면 관련 변수를 초기화한다.
-class Structure :public Place {
+class Structure final :public Place {
 public:
     Structure(int x, int y, std::string name, std::string explanation)
         : Place(x, y, name, explanation) {}

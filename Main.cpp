@@ -12,9 +12,11 @@
 #include "Character.h"
 
 //////////////////////////////////////////////////////////////////////////
+//2020 2학기 객체지향 프로그래밍 Team Project                           //
 //DGIST Campus Cyer Tour Program                                        //
 //201911100 옥성원, 201911105 유민지, 201911151 정유나, 201911192 허진웅//
 //////////////////////////////////////////////////////////////////////////
+
 
 //파일 입출력을 이용하여 structure_list.txt, attraction_list.txt 내에 콤마와 엔터로 구별되어 있는 건물들의 좌표와 설명을 vector에 저장, 반환한다.
 //해당 vector의 요소 4가지를 인자로 attraction과 structure 인스턴스를 생성한다.
@@ -123,23 +125,35 @@ int StartProgram() {
     }
 }
 
-//main 함수 내부에서 case1이 불리게 되면 관련 메뉴를 출력해주는 함수이다. 
-//structure_num, attraction_num을 매개변수로 받고, 각 목록의 장소를 숫자와 함께 출력한다.
-void PrepareMainCase1(const int& structure_num, const int& attraction_num) {
-    system("cls");
-    for (int i = 0; i < structure_num; i++) {
-        std::cout << i + 1 << ". ";
-        structure_list[i].PrintName();
-        std::cout << std::endl;
-    }
-    for (int i = 0; i < attraction_num; i++) {
-        std::cout << i + 24 << ". ";
-        attraction_list[i].PrintName();
-        std::cout << std::endl;
-    }
 
-    std::cout << std::endl << "출발 위치와 도착 위치를 입력하세요." << std::endl;
-    std::cout << "예시: E7에서 출발해서 학부생 기숙사로 이동 시 7 16 입력" << std::endl;
+
+
+
+
+
+
+
+
+
+
+
+
+//main 함수 내부에서 case1을 실행할 때 발생할 수 있는 예외를 처리해주는 함수이다.
+//입력한 값이 숫자가 아니거나, 범위에 맞는 값이 아닐 경우 throw 한다.
+void ThrowMainCase1(int& start_num, int& end_num) {
+    //사용자가 쳐서 넣은 두 개의 값을 인식하여 integer로 변환한다.
+    std::string str;
+    std::getline(std::cin, str);
+    std::istringstream iss{ str };
+    iss >> start_num;
+    iss >> end_num;
+
+    //integer로 변환 실패 시 throw
+    if (iss.fail()) throw iss.str();
+
+    //start_num과 end_num이 상정된 범위를 벗어날 시 throw(장소의 수는 32개이다.)
+    if (start_num <= 0 || start_num > 32 || start_num == end_num) throw start_num;
+    if (end_num <= 0 || end_num > 32) throw end_num;
 }
 
 //main 함수 내부에서 case1이 불리게 되면 예외 처리 후에 호출되어 기능을 수행하기 시작하는 함수이다. 
@@ -184,29 +198,28 @@ void SuccessMainCase1(Map& map, const int& structure_num, const int& attraction_
 void MainCase1(Map& map, const int& structure_num, const int& attraction_num) {
     int start_num, end_num;
     do {
+        //case1에 대한 설명 출력
+        system("cls");
+        for (int i = 0; i < structure_num; i++) {
+            std::cout << i + 1 << ". ";
+            structure_list[i].PrintName();
+            std::cout << std::endl;
+        }
+        for (int i = 0; i < attraction_num; i++) {
+            std::cout << i + 24 << ". ";
+            attraction_list[i].PrintName();
+            std::cout << std::endl;
+        }
+        std::cout << std::endl << "출발 위치와 도착 위치를 입력하세요." << std::endl;
+        std::cout << "예시: E7에서 출발해서 학부생 기숙사로 이동 시 7 16 입력" << std::endl;
         try {
-            //case1에 대한 메뉴 출력
-            PrepareMainCase1(structure_num, attraction_num);
+            //예외 사례에 대한 throw 수행
+            ThrowMainCase1(start_num, end_num);
 
-            //사용자가 쳐서 넣은 두 개의 값을 인식하여 integer로 변환한다.
-            std::string str;
-            std::getline(std::cin, str);
-            std::istringstream iss{ str };
-            iss >> start_num;
-            iss >> end_num;
-
-            //integer로 변환 실패 시 throw
-            if (iss.fail()) throw iss.str();
-
-            //start_num과 end_num이 상정된 범위를 벗어날 시 throw(장소의 수는 32개이다.)
-            if (start_num <= 0 || start_num > 32 || start_num == end_num) throw start_num;
-            if (end_num <= 0 || end_num > 32) throw end_num;
-
-            //예외 처리 이후 기능 수행
+            //예외 처리 이후, 정상적인 경우에 대하여 기능 수행
             SuccessMainCase1(map, structure_num, attraction_num, start_num, end_num);
             break;
         }
-
         //범위에 벗어난 숫자를 입력시에는 잘못된 숫자를 입력하였다고 출력된다.
         catch (int expn) {
             system("cls");
@@ -227,16 +240,52 @@ void MainCase1(Map& map, const int& structure_num, const int& attraction_num) {
     } while (true);
 }
 
-//main 함수 내부에서 case2가 불리게 되면 관련 메뉴를 출력해주는 함수이다. 
-//attraction_num을 매개변수로 받고, 목록의 이름과 장소를 숫자와 함께 출력한다.
-void PrepareMainCase2(const int& attraction_num) {
-    system("cls");
-    for (int i = 0; i < attraction_num; i++) {
-        std::cout << i + 1 << ". ";
-        attraction_list[i].PrintName();
-        std::cout << ": ";
-        attraction_list[i].PrintInformation();
-        std::cout << std::endl;
+//main 함수 내부에서 case2를 실행할 때 발생할 수 있는 예외를 처리해주는 함수이다.
+//입력한 값이 숫자가 아니거나, 범위에 맞는 값이 아닐 경우 throw 한다.
+void ThrowMainCase2(int& sequence_count, int& temp, std::vector<int>& sequence) {
+    //최소 2개, 최대 9개까지 장소를 입력받기 때문에, 입력받을 장소의 개수를 먼저 입력받아 sequence_count에 저장한다.
+    std::cout << "가고 싶은 장소의 개수를 입력하세요." << std::endl;
+    std::string str1;
+    std::getline(std::cin, str1);
+    std::istringstream iss1{ str1 };
+    iss1 >> sequence_count;
+
+    //integer로 변환 실패 시 throw 
+    if (iss1.fail()) throw iss1.str();
+
+    //sequence_count가 범위를 벗어날 시 throw 
+    if (sequence_count <= 1 || sequence_count > 9) throw sequence_count;
+
+    std::cout << "가고 싶은 장소의 숫자를 순서대로 입력하세요." << std::endl;
+    std::cout << "예시: 5번, 3번, 1번 장소 순서로 이동 -> 5 3 1을 입력" << std::endl;
+
+    //사용자가 쳐서 넣은 sequence_count만큼의 값을 인식하여 integer로 변환한다.
+    std::string str2;
+    std::getline(std::cin, str2);
+    std::istringstream iss2{ str2 };
+    for (int i = 0; i < sequence_count; i++) {
+        iss2 >> temp;
+        //integer로 변환 실패 시 throw
+        if (iss2.fail()) {
+            std::vector <int> new_vector;
+            sequence = new_vector;
+            throw iss2.str();
+        }
+        //sequence_count가 범위를 벗어날 시 throw 
+        if (temp < 1 || temp > 9)
+        {
+            std::vector <int> new_vector;
+            sequence = new_vector;
+            throw temp;
+        }
+        //성공 시 각각의 값을 sequence에 집어넣는다.
+        sequence.push_back(temp);
+    }
+    //중복된 수를 받았을 경우 throw
+    for (int i = 0; i < sequence_count; i++) {
+        for (int j = i + 1; j < sequence_count; j++) {
+            if (sequence[i] == sequence[j]) throw sequence[i];
+        }
     }
 }
 
@@ -264,74 +313,33 @@ void SuccessMainCase2(Map& map, const int& sequence_count, const std::vector <in
 //옵션 2에 대한 함수이다. 해당 함수는 추천 경로 출력을 담당한다.
 //장소에 대한 설명만을 보고 장소를 순서대로 입력하면, 해당 순서에 맞는 최단 경로를 이어서 나타낸다.
 void MainCase2(Map& map, const int& attraction_num) {
-    int temp;
     int sequence_count;
+    int temp;
+    std::vector <int> sequence;
     do {
-        try {
-            PrepareMainCase2(attraction_num);
-            
-            //최소 2개, 최대 9개까지 장소를 입력받기 때문에, 입력받을 장소의 개수를 먼저 입력받아 sequence_count에 저장한다.
-            std::cout << "가고 싶은 장소의 개수를 입력하세요." << std::endl;
-            std::vector <int>  sequence;
-            std::string str1;
-            std::getline(std::cin, str1);
-            std::istringstream iss1{ str1 };
-            iss1 >> sequence_count;
-
-            //integer로 변환 실패 시 throw 
-            if (iss1.fail()) throw iss1.str();
-
-            //sequence_count가 범위를 벗어날 시 throw 
-            if (sequence_count <= 1 || sequence_count > 9) throw sequence_count;
-
-            std::cout << "가고 싶은 장소의 숫자를 순서대로 입력하세요." << std::endl;
-            std::cout << "예시: 5번, 3번, 1번 장소 순서로 이동 -> 5 3 1을 입력" << std::endl;
-
-            //사용자가 쳐서 넣은 sequence_count만큼의 값을 인식하여 integer로 변환한다.
-            std::string str2;
-            std::getline(std::cin, str2);
-            std::istringstream iss2{ str2 };
-            for (int i = 0; i < sequence_count; i++) {
-                iss2 >> temp;
-
-                //integer로 변환 실패 시 throw
-                if (iss2.fail()) {
-                    std::vector <int> new_vector;
-                    sequence = new_vector;
-                    throw iss2.str();
-                }
-
-                //sequence_count가 범위를 벗어날 시 throw 
-                if (temp < 1 || temp > 9)
-                {
-                    std::vector <int> new_vector;
-                    sequence = new_vector;
-                    throw temp;
-                }
-
-                //성공 시 각각의 값을 sequence에 집어넣는다.
-                sequence.push_back(temp);
-            }
-            
-            //중복된 수를 받았을 경우 throw
-            for (int i = 0; i < sequence_count; i++) {
-                for (int j = i + 1; j < sequence_count; j++) {
-                    if (sequence[i] == sequence[j]) throw sequence[i];
-                }
-            }
+        //case2에 대한 설명 출력
+        system("cls");
+        for (int i = 0; i < attraction_num; i++) {
+            std::cout << i + 1 << ". ";
+            attraction_list[i].PrintName();
+            std::cout << ": ";
+            attraction_list[i].PrintInformation();
+            std::cout << std::endl;
+        }
+        try {   
+            //예외 사례에 대한 throw 수행
+            ThrowMainCase2(sequence_count, temp, sequence);
 
             //예외 처리 이후 기능 수행
             SuccessMainCase2(map, sequence_count, sequence);
             break;
         }
-
         //범위에 벗어난 숫자를 입력시에는 잘못된 숫자를 입력하였다고 뜬다.
         catch (int expn) { 
             system("cls");
             std::cout << expn << ": 잘못된 숫자를 입력하셨습니다." << std::endl;
 
         }
-
         //integer 변환 실패시, 문자를 입력하였다고 뜬다. 
         catch (std::string expn) {
             system("cls");

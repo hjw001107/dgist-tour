@@ -12,4 +12,5 @@ void RemoveCursor();
 void ChangeColor(int = COLOR_WHITE, int = COLOR_BLACK);
 
 //w, a, s, d 키를 이용하여 방향을 선택하는 함수이다.
+//선택한 방향을 정수형으로 반환해준다.
 int Selector();

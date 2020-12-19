@@ -1,5 +1,28 @@
 #include "Map.h"
 
+//Map 클래스의 멤버 함수에 대한 정의 부분이다.
+//자세한 설명은 헤더 파일에서 찾아볼 수 있다.
+
+std::vector<std::vector<int>> Map::ReadMap() {
+    std::ifstream ifs{ "map.txt" };
+    std::vector<std::vector<int>> rtn;
+    while (ifs) {
+        std::string line;
+        std::getline(ifs, line);
+        if (line.empty())
+            break;
+
+        std::istringstream iss{ line };
+        std::vector<int> vec(
+            std::istream_iterator<int>{iss},
+            std::istream_iterator<int>{}
+        );
+
+        rtn.push_back(vec);
+    }
+    return rtn;
+}
+
 void Map::Push(int& x, int& y, int& cnt, const int& xx, const int& yy, const int& x_pos, const int& y_pos) {
     x = xx;
     y = yy;
@@ -17,9 +40,10 @@ void Map::InitializeMap() {
 }
 
 void Map::SearchWay(const int& start_x, const int& start_y, const int& end_x, const int& end_y) {
-    int pos, cnt;             //최단 경로를 찾기 위해 필요한 정수
-    int* x = new int[40000];  //최단 경로를 찾기 위해 필요한 배열
-    int* y = new int[40000];  //최단 경로를 찾기 위해 필요한 배열
+    int pos, cnt;              //최단 경로를 찾기 위해 필요한 정수
+    int length = 10000;        
+    int* x = new int[length];  //최단 경로를 찾기 위해 필요한 배열
+    int* y = new int[length];  //최단 경로를 찾기 위해 필요한 배열
 
     x[0] = start_x;
     y[0] = start_y;
@@ -43,7 +67,6 @@ void Map::SearchWay(const int& start_x, const int& start_y, const int& end_x, co
         if (x[pos] < map_width - 1 && ((map_data[y[pos]][x[pos] + 1] != 1))) {
             Push(*(x + cnt), *(y + cnt), cnt, x[pos] + 1, y[pos], x[pos], y[pos]);
         }
-
         pos++;
     }
     //여기까지 최단 경로를 탐색하기 위한 정보는 모두 탐색되고, 아래부터는 최단 경로를 하나로 만들어 저장한다.
